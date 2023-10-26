@@ -4,21 +4,12 @@
 	// Components
 	import { CodeBlock, LightSwitch, Tab, TabGroup } from '@skeletonlabs/skeleton';
 </script>
-<Noir />
+
 
 
 <div class="container mx-auto p-8 space-y-4 text-center">
 	<div class="text-center">
-		<Avatar
-		initials="MS" background="bg-primary-500" 
-		border="border-2 border-surface-300-600-token hover:!border-primary-500"
-		shadow="shadow-lg"
-		cursor="cursor-pointer" 
-		src="/src/lib/images/martin-300x300.png" 
-		width="w-48" rounded="rounded-full"
-		action={filter} 
-		actionParams="#Noir"
-	/>
+
 	</div>
 	<h1 class="h1 font-black">Skeleton Homepage</h1>
 	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>

@@ -1,7 +1,9 @@
 <script>
 	import '../app.postcss';
+	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { Avatar } from '@skeletonlabs/skeleton';
+	import { filter, XPro, Noir } from '@skeletonlabs/skeleton';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	initializeStores();
@@ -10,7 +12,7 @@
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
-	import Navigation from '$lib/Navigation/Navigation.svelte';
+	
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
 	// Open Close Drawer Functions
@@ -25,11 +27,11 @@
 						
 </script>
 
-
+<Noir />
+<XPro />
 
 <!-- App Drawer -->
 <Drawer>
-	<hr />
 	<div class="flex items-center">
 		<button class="btn btn-primary my-3" on:click={drawerClose}>
 			<span>
@@ -75,11 +77,15 @@
 				<div class="w-5 h-5"></div>
 				<LightSwitch />
 				<Avatar
-					initials="MS" background="bg-primary-500"
+					initials="MS"
+					background="bg-primary-500" 
 					border="border-2 border-surface-300-600-token hover:!border-primary-500"
-					cursor="cursor-pointer"
-					src="/src/lib/images/martin-300x300.png"
-					width="w-10" rounded="rounded-full"
+					shadow="shadow-sm"
+					cursor="cursor-pointer" 
+					src="/src/lib/images/martin-300x300.png" 
+					width="w-12" rounded="rounded-full"
+					action={filter} 
+					actionParams=""
 				/>
 			</svelte:fragment>
 		</AppBar>
