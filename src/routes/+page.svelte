@@ -1,18 +1,33 @@
 <script>
-	import { Avatar } from '@skeletonlabs/skeleton';
-	import { filter, XPro, Noir } from '@skeletonlabs/skeleton';
+	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';	
+	
 	// Components
 	import { CodeBlock, LightSwitch, Tab, TabGroup } from '@skeletonlabs/skeleton';
+	import { Avatar } from '@skeletonlabs/skeleton';
+	import { filter, XPro, Noir } from '@skeletonlabs/skeleton';
+
+
+	import { popup } from '@skeletonlabs/skeleton';
+	
+	import { storePopup } from '@skeletonlabs/skeleton';
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+			
+	const popupClick = {
+		event: 'click',
+		target: 'popupClick',
+		placement: 'top'
+	};
 </script>
 
-
+<div class="card p-4 variant-filled-primary" data-popup="popupClick">
+	<p>Click Content</p>
+	<div class="arrow variant-filled-primary" />
+</div>
 
 <div class="container mx-auto p-8 space-y-4 text-center">
-	<div class="text-center">
-
-	</div>
 	<h1 class="h1 font-black">Skeleton Homepage</h1>
 	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+	<button class="btn variant-filled" use:popup={popupClick}>Click</button>
 	<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum eros nulla, eu pretium massa tristique eu. Ut urna ex, facilisis vitae mattis vel, auctor sed dolor. Sed efficitur tincidunt elit quis dignissim. Nulla nisi tellus, cursus in interdum nec, ultrices vel leo. Sed malesuada ipsum quis enim pulvinar mattis quis lobortis diam. Curabitur elementum cursus orci, eget blandit erat ullamcorper ac. Nam sem odio, malesuada sit amet scelerisque nec, porta id odio. Mauris imperdiet eu odio a vehicula. Nulla vel viverra ipsum, eget congue nunc. Aliquam sed ex a purus venenatis fringilla ut in dolor. Nullam dui metus, cursus vel blandit sed, eleifend ac lectus. Praesent aliquam rhoncus ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit tellus ac feugiat blandit. Aenean sit amet diam dictum, pharetra mauris sodales, molestie orci. Quisque sit amet enim vel lorem suscipit laoreet ut sed justo.
 		Ut scelerisque bibendum risus, vel laoreet magna blandit eu. Suspendisse semper, mauris sit amet pretium tempus, diam mi finibus tortor, vel semper magna justo egestas tellus. Praesent id ante eget elit sagittis pretium. Ut dui nibh, pellentesque a pellentesque id, efficitur ac lacus. Sed sit amet dolor risus. Nullam semper dolor eget massa blandit, sit amet commodo enim congue. Aenean sit amet lacinia est. In metus lacus, suscipit non hendrerit facilisis, efficitur vitae mauris. Praesent vulputate nisl eget purus interdum, ac scelerisque quam efficitur. Vestibulum id mauris non lorem faucibus semper nec non tortor.
 		Nam purus dolor, sagittis tempus pulvinar sed, consectetur at velit. Sed mattis hendrerit imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum nunc quis libero malesuada rhoncus. Nulla commodo cursus justo sed posuere. Sed et nunc pretium, viverra mi ac, pretium metus. Mauris condimentum eros a velit finibus sodales. Quisque suscipit, felis sit amet pulvinar fringilla, tellus lorem mollis est, eget lobortis nunc mi quis sapien. Nam eget scelerisque erat, non commodo felis. Maecenas porta vestibulum purus, vel sollicitudin ante dapibus eget. Donec consectetur sapien justo.
@@ -34,6 +49,8 @@
 	<span class="inline-flex items-center rounded-md bg-indigo-500 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">Badge</span>
 	<span class="inline-flex items-center rounded-md bg-purple-500 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">Badge</span>
 	<span class="inline-flex items-center rounded-md bg-pink-500 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10">Badge</span>
-
 </div>
+
+
+
 

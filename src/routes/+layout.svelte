@@ -24,6 +24,8 @@
         drawerStore.close();
     }
 
+
+
 						
 </script>
 
@@ -94,6 +96,8 @@
 	<slot />
 	<!-- (pageFooter) -->
 	<svelte:fragment slot="footer">
-		<div class="text-sm m-4 fill-current text-gray-500">&copy; 2023 Martin Sebastian</div>
+		<hr />
+		<div class="text-sm m-4 text-gray-500">&copy; 2023 Martin Sebastian</div>
 	</svelte:fragment>
 </AppShell>
+
