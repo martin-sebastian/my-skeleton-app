@@ -7,13 +7,13 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	initializeStores();
-	
 
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
 
 	// Open Close Drawer Functions
 	const drawerStore = getDrawerStore();
@@ -29,8 +29,8 @@
 <XPro />
 
 <!-- App Drawer -->
-<Drawer>
-	<div class="flex items-center">
+<Drawer class="rounded-none">
+	<div class="flex items-center rounded-none">
 		<button class="btn btn-primary my-5" on:click={drawerClose}>
 			<span>
 				<svg class="fill-token h-5 w-5 ml-3 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><polygon points="3.828 9 9.899 2.929 8.485 1.515 0 10 .707 10.707 8.485 18.485 9.899 17.071 3.828 11 20 11 20 9 3.828 9"/></svg>

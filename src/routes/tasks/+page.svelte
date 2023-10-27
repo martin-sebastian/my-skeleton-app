@@ -43,6 +43,8 @@
 		hoveringOverBasket = null;
 	}
 </script>
+
+
 <div class="p-8">
 <p>Drag a fruit from one basket to another.</p>
 
