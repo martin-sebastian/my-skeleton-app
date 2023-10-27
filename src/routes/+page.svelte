@@ -15,12 +15,16 @@
 	const popupClick = {
 		event: 'click',
 		target: 'popupClick',
-		placement: 'top'
+		placement: 'bottom'
 	};
 </script>
 
-<div class="card p-4 variant-filled-primary" data-popup="popupClick">
-	<p>Click Content</p>
+<div class="card p-8 variant-filled-primary" data-popup="popupClick">
+	<h2>Martin Sebastian</h2>
+	<hr />
+	<p>martinsebastian.io</p>
+	<hr />
+	<p>martinsebastian.io</p>
 	<div class="arrow variant-filled-primary" />
 </div>
 
@@ -28,7 +32,7 @@
 	<h1 class="h1 font-black">Skeleton Homepage</h1>
 	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 	<button class="btn variant-filled" use:popup={popupClick}>Click</button>
-	<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum eros nulla, eu pretium massa tristique eu. Ut urna ex, facilisis vitae mattis vel, auctor sed dolor. Sed efficitur tincidunt elit quis dignissim. Nulla nisi tellus, cursus in interdum nec, ultrices vel leo. Sed malesuada ipsum quis enim pulvinar mattis quis lobortis diam. Curabitur elementum cursus orci, eget blandit erat ullamcorper ac. Nam sem odio, malesuada sit amet scelerisque nec, porta id odio. Mauris imperdiet eu odio a vehicula. Nulla vel viverra ipsum, eget congue nunc. Aliquam sed ex a purus venenatis fringilla ut in dolor. Nullam dui metus, cursus vel blandit sed, eleifend ac lectus. Praesent aliquam rhoncus ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit tellus ac feugiat blandit. Aenean sit amet diam dictum, pharetra mauris sodales, molestie orci. Quisque sit amet enim vel lorem suscipit laoreet ut sed justo.
+	<p class="text-left w-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum eros nulla, eu pretium massa tristique eu. Ut urna ex, facilisis vitae mattis vel, auctor sed dolor. Sed efficitur tincidunt elit quis dignissim. Nulla nisi tellus, cursus in interdum nec, ultrices vel leo. Sed malesuada ipsum quis enim pulvinar mattis quis lobortis diam. Curabitur elementum cursus orci, eget blandit erat ullamcorper ac. Nam sem odio, malesuada sit amet scelerisque nec, porta id odio. Mauris imperdiet eu odio a vehicula. Nulla vel viverra ipsum, eget congue nunc. Aliquam sed ex a purus venenatis fringilla ut in dolor. Nullam dui metus, cursus vel blandit sed, eleifend ac lectus. Praesent aliquam rhoncus ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit tellus ac feugiat blandit. Aenean sit amet diam dictum, pharetra mauris sodales, molestie orci. Quisque sit amet enim vel lorem suscipit laoreet ut sed justo.
 		Ut scelerisque bibendum risus, vel laoreet magna blandit eu. Suspendisse semper, mauris sit amet pretium tempus, diam mi finibus tortor, vel semper magna justo egestas tellus. Praesent id ante eget elit sagittis pretium. Ut dui nibh, pellentesque a pellentesque id, efficitur ac lacus. Sed sit amet dolor risus. Nullam semper dolor eget massa blandit, sit amet commodo enim congue. Aenean sit amet lacinia est. In metus lacus, suscipit non hendrerit facilisis, efficitur vitae mauris. Praesent vulputate nisl eget purus interdum, ac scelerisque quam efficitur. Vestibulum id mauris non lorem faucibus semper nec non tortor.
 		Nam purus dolor, sagittis tempus pulvinar sed, consectetur at velit. Sed mattis hendrerit imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed interdum nunc quis libero malesuada rhoncus. Nulla commodo cursus justo sed posuere. Sed et nunc pretium, viverra mi ac, pretium metus. Mauris condimentum eros a velit finibus sodales. Quisque suscipit, felis sit amet pulvinar fringilla, tellus lorem mollis est, eget lobortis nunc mi quis sapien. Nam eget scelerisque erat, non commodo felis. Maecenas porta vestibulum purus, vel sollicitudin ante dapibus eget. Donec consectetur sapien justo.
 		Duis sagittis elit sit amet nulla auctor, vitae ullamcorper dui scelerisque. Fusce id risus nec lacus rhoncus aliquam. Sed tortor ante, ultrices ac purus ut, imperdiet placerat urna. Vivamus eu nisl quis ex vestibulum eleifend id id risus. Curabitur vulputate nibh sit amet imperdiet rutrum. Proin suscipit dui urna, sit amet lobortis felis convallis et. Duis ullamcorper orci massa, id sagittis odio imperdiet non. Curabitur eleifend ac sem a vestibulum. Proin gravida metus et commodo rhoncus. Mauris sed posuere leo, ac condimentum nisi. Nam lectus enim, commodo a tempus eget, bibendum id risus. Nulla libero massa, dictum vel convallis in, posuere in turpis. Donec arcu odio, mattis nec felis a, interdum commodo diam. Nullam congue finibus dui. Etiam eu est pretium, consectetur lacus hendrerit, eleifend sem. Mauris facilisis mattis ipsum quis auctor.

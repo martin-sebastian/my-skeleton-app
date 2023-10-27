@@ -22,11 +22,7 @@
 	}
 	function drawerClose() {
         drawerStore.close();
-    }
-
-
-
-						
+    }					
 </script>
 
 <Noir />
@@ -35,7 +31,7 @@
 <!-- App Drawer -->
 <Drawer>
 	<div class="flex items-center">
-		<button class="btn btn-primary my-3" on:click={drawerClose}>
+		<button class="btn btn-primary my-5" on:click={drawerClose}>
 			<span>
 				<svg class="fill-token h-5 w-5 ml-3 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><polygon points="3.828 9 9.899 2.929 8.485 1.515 0 10 .707 10.707 8.485 18.485 9.899 17.071 3.828 11 20 11 20 9 3.828 9"/></svg>
 			</span>
@@ -44,7 +40,6 @@
 	<hr />
 	<Navigation />
 </Drawer>
-
 
 <!-- App Shell -->
 <AppShell slotHeader="shadow-md" slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64">
@@ -80,13 +75,13 @@
 				<LightSwitch />
 				<Avatar
 					initials="MS"
-					background="bg-primary-500" 
+					background="bg-primary-500"
 					border="border-2 border-surface-300-600-token hover:!border-primary-500"
 					shadow="shadow-sm"
-					cursor="cursor-pointer" 
-					src="/src/lib/images/martin-300x300.png" 
+					cursor="cursor-pointer"
+					src="/src/lib/images/martin-300x300.png"
 					width="w-12" rounded="rounded-full"
-					action={filter} 
+					action={filter}
 					actionParams=""
 				/>
 			</svelte:fragment>
@@ -96,7 +91,6 @@
 	<slot />
 	<!-- (pageFooter) -->
 	<svelte:fragment slot="footer">
-		<hr />
 		<div class="text-sm m-4 text-gray-500">&copy; 2023 Martin Sebastian</div>
 	</svelte:fragment>
 </AppShell>
