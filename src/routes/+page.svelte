@@ -16,6 +16,7 @@
 		target: 'popupClick',
 		placement: 'bottom'
 	};
+
 </script>
 
 <div class="card p-8 variant-filled-primary" data-popup="popupClick">
@@ -37,6 +38,9 @@
 		Duis sagittis elit sit amet nulla auctor, vitae ullamcorper dui scelerisque. Fusce id risus nec lacus rhoncus aliquam. Sed tortor ante, ultrices ac purus ut, imperdiet placerat urna. Vivamus eu nisl quis ex vestibulum eleifend id id risus. Curabitur vulputate nibh sit amet imperdiet rutrum. Proin suscipit dui urna, sit amet lobortis felis convallis et. Duis ullamcorper orci massa, id sagittis odio imperdiet non. Curabitur eleifend ac sem a vestibulum. Proin gravida metus et commodo rhoncus. Mauris sed posuere leo, ac condimentum nisi. Nam lectus enim, commodo a tempus eget, bibendum id risus. Nulla libero massa, dictum vel convallis in, posuere in turpis. Donec arcu odio, mattis nec felis a, interdum commodo diam. Nullam congue finibus dui. Etiam eu est pretium, consectetur lacus hendrerit, eleifend sem. Mauris facilisis mattis ipsum quis auctor.
 		Aliquam dignissim elit a elit elementum, at consequat orci dapibus. Morbi vehicula semper scelerisque. Nullam nulla nunc, volutpat vel dui non, tincidunt suscipit diam. Maecenas lectus eros, congue sit amet sagittis non, scelerisque ut augue. Nam sit amet laoreet enim, at volutpat mi. Aliquam id elit at nunc maximus congue. Cras egestas commodo blandit. Aliquam erat volutpat. Maecenas sit amet vestibulum metus, sed pulvinar sapien. In ut mollis magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper accumsan augue sed elementum. Aliquam tincidunt mi sit amet ante porta, ultrices feugiat quam ultrices. Vivamus in tempor odio, quis cursus justo. Aenean commodo, mauris a aliquet scelerisque, nisi sem pellentesque odio, vel pulvinar nisi lorem eget odio. Aenean iaculis ante non mauris ornare interdum.</p>
 	<hr />
+
+
+			
 	<section>
 		<a class="btn variant-filled-primary" href="https://kit.svelte.dev/">SvelteKit</a>
 		<a class="btn variant-filled-secondary" href="https://tailwindcss.com/">Tailwind</a>

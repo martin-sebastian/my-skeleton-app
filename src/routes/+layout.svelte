@@ -1,5 +1,6 @@
 <script>
 	import '../app.postcss';
+	import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { Avatar } from '@skeletonlabs/skeleton';
@@ -13,7 +14,6 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-
 
 	// Open Close Drawer Functions
 	const drawerStore = getDrawerStore();
@@ -29,7 +29,7 @@
 <XPro />
 
 <!-- App Drawer -->
-<Drawer class="rounded-none">
+<Drawer class="w-50">
 	<div class="flex items-center rounded-none">
 		<button class="btn btn-primary my-5" on:click={drawerClose}>
 			<span>
@@ -40,6 +40,8 @@
 	<hr />
 	<Navigation />
 </Drawer>
+
+
 
 <!-- App Shell -->
 <AppShell slotHeader="shadow-md" slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64">
