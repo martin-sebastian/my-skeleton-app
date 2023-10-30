@@ -87,7 +87,7 @@
 						/></svg
 					>
 				</button>
-				<div class="w-5 h-5" />
+				<div class="w-2 h-5" />
 
 				<Avatar
 					initials="MS"
