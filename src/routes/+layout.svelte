@@ -48,7 +48,10 @@
 </Drawer>
 
 <!-- App Shell -->
-<AppShell slotHeader="shadow-md" slotSidebarLeft="bg-surface-500/5 w-2 lg:w-64 lg:divide-x">
+<AppShell
+	slotHeader="shadow-md"
+	slotSidebarLeft="bg-surface-500/5 w-0 border-r-0 border-r-surface-200 dark:border-r-surface-500 lg:w-64 lg:border-r"
+>
 	<svelte:fragment slot="sidebarLeft">
 		<Navigation />
 	</svelte:fragment>
