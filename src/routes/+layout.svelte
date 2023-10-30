@@ -29,7 +29,7 @@
 
 <!-- App Drawer -->
 <Drawer>
-	<div class="flex items-center rounded-none">
+	<div class="flex items-center">
 		<button class="btn btn-primary my-5" on:click={drawerClose}>
 			<span>
 				<svg
@@ -87,15 +87,8 @@
 						/></svg
 					>
 				</button>
-				<button type="button" class="btn-icon variant-ghost-surface">
-					<svg class="fill-token h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-						><path
-							d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm-5.6-4.29a9.95 9.95 0 0 1 11.2 0 8 8 0 1 0-11.2 0zm6.12-7.64l3.02-3.02 1.41 1.41-3.02 3.02a2 2 0 1 1-1.41-1.41z"
-						/></svg
-					>
-				</button>
 				<div class="w-5 h-5" />
-				<LightSwitch />
+
 				<Avatar
 					initials="MS"
 					background="bg-primary-500"
