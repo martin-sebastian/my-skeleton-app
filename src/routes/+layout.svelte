@@ -92,10 +92,10 @@
 				<Avatar
 					initials="MS"
 					background="bg-primary-500"
-					border="border-2 border-surface-300-600-token hover:!border-primary-500"
+					border="border-2 border-primary-400 hover:!border-primary-500"
 					shadow="shadow-sm"
 					cursor="cursor-pointer"
-					src="/src/lib/images/martin-300x300.png"
+					src="../src/lib/images/martin-300x300.png"
 					width="w-12"
 					rounded="rounded-full"
 					action={filter}
