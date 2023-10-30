@@ -28,7 +28,7 @@
 <XPro />
 
 <!-- App Drawer -->
-<Drawer class="w-50">
+<Drawer>
 	<div class="flex items-center rounded-none">
 		<button class="btn btn-primary my-5" on:click={drawerClose}>
 			<span>
@@ -48,7 +48,7 @@
 </Drawer>
 
 <!-- App Shell -->
-<AppShell slotHeader="shadow-md" slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64">
+<AppShell slotHeader="shadow-md" slotSidebarLeft="bg-surface-500/5 w-2 lg:w-64 lg:divide-x">
 	<svelte:fragment slot="sidebarLeft">
 		<Navigation />
 	</svelte:fragment>
@@ -99,7 +99,7 @@
 					border="border-2 border-surface-300-600-token hover:!border-primary-500"
 					shadow="shadow-sm"
 					cursor="cursor-pointer"
-					src="src/lib/images/martin-300x300.png"
+					src="/src/lib/images/martin-300x300.png"
 					width="w-12"
 					rounded="rounded-full"
 					action={filter}
@@ -112,6 +112,11 @@
 	<slot />
 	<!-- (pageFooter) -->
 	<svelte:fragment slot="footer">
-		<div class="text-sm m-4 text-gray-500">&copy; 2023 Martin Sebastian</div>
+		<div class="container flex flex-row">
+			<div class="flex-auto text-sm m-4 text-gray-500">&copy; 2023 Martin Sebastian</div>
+			<div class="flex-auto text-right m-4 absolute right-0">
+				<LightSwitch />
+			</div>
+		</div>
 	</svelte:fragment>
 </AppShell>
