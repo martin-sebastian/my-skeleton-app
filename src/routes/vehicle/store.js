@@ -1,18 +1,20 @@
-import { writable, derived } from 'svelte/store';
+import { writable } from 'svelte/store';
 
-/** Store for your data. 
-This assumes the data you're pulling back will be an array.
-If it's going to be an object, default this to an empty object.
-**/
-export const apiData = writable([]);
+// Create a writable store with initial value of null
+const store = writable(null);
 
-/** Data transformation.
-For our use case, we only care about the drink names, not the other information.
-Here, we'll create a derived store to hold the drink names.
-**/
-export const drinkNames = derived(apiData, ($apiData) => {
-  if ($apiData.drinks){
-    return $apiData.drinks.map(drink => drink.strDrink);
-  }
-  return [];
-});
+// Function to fetch data from the API
+async function fetchData() {
+	const response = await fetch(
+		'https://newportal.flatoutmotorcycles.com/portal/public/api/majorunit/stocknumber/P25060'
+	);
+	const data = await response.json();
+
+	// Update the store with the fetched data
+	store.set(data);
+}
+
+// Fetch data when the store is created
+fetchData();
+
+export default store;
