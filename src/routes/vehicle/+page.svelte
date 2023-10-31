@@ -12,7 +12,7 @@
 </script>
 
 <main class="p-8">
-	<h1 class="h1 my-5">Vehicle Data via API</h1>
+	<h1 class="h1 mb-10">Vehicle Data via API</h1>
 
 	{#if data !== 'No Unit Found'}
 		<div class="max-w-xl rounded-xl overflow-hidden shadow-lg">
@@ -52,6 +52,10 @@
 				<span
 					class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
 					>{data.ModelCode}</span
+				>
+				<span
+					class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+					>{data.B50ModelTypeStyle}</span
 				>
 				{#if data.Stocked === true}
 					<span
