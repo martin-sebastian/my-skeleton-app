@@ -76,6 +76,7 @@
 			</svelte:fragment>
 
 			<svelte:fragment slot="trail">
+				<LightSwitch />
 				<Avatar
 					initials="MS"
 					background="bg-primary-500"

@@ -28,10 +28,24 @@
 		<div class="arrow variant-filled-primary" />
 	</div>
 
-	<div class="text-center space-y-5">
-		<h1 class="h1 font-black">Skeleton Homepage</h1>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		<button class="btn variant-filled" use:popup={popupClick}>Click</button>
+	<div class="container space-y-5">
+		<h1 class="h1">
+			<span
+				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
+				>Design.</span
+			>
+			<span
+				class="bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
+				>Build.</span
+			>
+			<span
+				class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone"
+				>Deploy.</span
+			>
+		</h1>
+
+		<p>My framework experiment built with SvelteKit and Tailwind CSS, deployed to Vercel.</p>
+		<button class="btn variant-filled-primary" use:popup={popupClick}>Click</button>
 		<p class="text-left w-auto">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum eros nulla, eu pretium
 			massa tristique eu. Ut urna ex, facilisis vitae mattis vel, auctor sed dolor. Sed efficitur
@@ -52,37 +66,18 @@
 			quam efficitur. Vestibulum id mauris non lorem faucibus semper nec non tortor. Nam purus
 			dolor, sagittis tempus pulvinar sed, consectetur at velit. Sed mattis hendrerit imperdiet.
 			Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-			Sed interdum nunc quis libero malesuada rhoncus. Nulla commodo cursus justo sed posuere. Sed
-			et nunc pretium, viverra mi ac, pretium metus. Mauris condimentum eros a velit finibus
-			sodales. Quisque suscipit, felis sit amet pulvinar fringilla, tellus lorem mollis est, eget
-			lobortis nunc mi quis sapien. Nam eget scelerisque erat, non commodo felis. Maecenas porta
-			vestibulum purus, vel sollicitudin ante dapibus eget. Donec consectetur sapien justo. Duis
-			sagittis elit sit amet nulla auctor, vitae ullamcorper dui scelerisque. Fusce id risus nec
-			lacus rhoncus aliquam. Sed tortor ante, ultrices ac purus ut, imperdiet placerat urna. Vivamus
-			eu nisl quis ex vestibulum eleifend id id risus. Curabitur vulputate nibh sit amet imperdiet
-			rutrum. Proin suscipit dui urna, sit amet lobortis felis convallis et. Duis ullamcorper orci
-			massa, id sagittis odio imperdiet non. Curabitur eleifend ac sem a vestibulum. Proin gravida
-			metus et commodo rhoncus. Mauris sed posuere leo, ac condimentum nisi. Nam lectus enim,
-			commodo a tempus eget, bibendum id risus. Nulla libero massa, dictum vel convallis in, posuere
-			in turpis. Donec arcu odio, mattis nec felis a, interdum commodo diam. Nullam congue finibus
-			dui. Etiam eu est pretium, consectetur lacus hendrerit, eleifend sem. Mauris facilisis mattis
-			ipsum quis auctor. Aliquam dignissim elit a elit elementum, at consequat orci dapibus. Morbi
-			vehicula semper scelerisque. Nullam nulla nunc, volutpat vel dui non, tincidunt suscipit diam.
-			Maecenas lectus eros, congue sit amet sagittis non, scelerisque ut augue. Nam sit amet laoreet
-			enim, at volutpat mi. Aliquam id elit at nunc maximus congue. Cras egestas commodo blandit.
-			Aliquam erat volutpat. Maecenas sit amet vestibulum metus, sed pulvinar sapien. In ut mollis
-			magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper accumsan augue
-			sed elementum. Aliquam tincidunt mi sit amet ante porta, ultrices feugiat quam ultrices.
-			Vivamus in tempor odio, quis cursus justo. Aenean commodo, mauris a aliquet scelerisque, nisi
-			sem pellentesque odio, vel pulvinar nisi lorem eget odio. Aenean iaculis ante non mauris
-			ornare interdum.
+			Sed interdum nunc quis libero malesuada rhoncus.
 		</p>
 		<hr />
 
 		<section>
-			<a class="btn variant-filled-primary" href="https://kit.svelte.dev/">SvelteKit</a>
-			<a class="btn variant-filled-secondary" href="https://tailwindcss.com/">Tailwind</a>
-			<a class="btn variant-filled-tertiary" href="https://github.com/">GitHub</a>
+			<a class="btn variant-filled-primary" href="https://kit.svelte.dev/" target="_blank"
+				>SvelteKit</a
+			>
+			<a class="btn variant-filled-secondary" href="https://tailwindcss.com/" target="_blank"
+				>Tailwind</a
+			>
+			<a class="btn variant-filled-tertiary" href="https://github.com/" target="_blank">GitHub</a>
 		</section>
 		<hr />
 		<p>

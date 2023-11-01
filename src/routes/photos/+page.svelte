@@ -11,7 +11,7 @@
 </script>
 
 <main class="p-8">
-	<h1 class="h1 mb-5">Photo Album</h1>
+	<h1 class="h1 mb-5">Photo Gallery</h1>
 	<section class="grid grid-cols-2 md:grid-cols-3 gap-4">
 		{#each images as image, index (index)}
 			<img class="rounded-xl" src={image.ImgURL} alt={`Image ${index + 1}`} />
