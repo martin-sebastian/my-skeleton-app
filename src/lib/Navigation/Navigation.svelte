@@ -9,7 +9,9 @@
 
 <nav class="list-nav p-4">
 	<ul>
-		<li class="hover:bg-primary-500 hover:text-white rounded-lg">
+		<li
+			class="hover:variant-filled-primary active:variant-filled-primary hover:text-white rounded-lg"
+		>
 			<a href="/" on:click={drawerClose}>
 				<svg
 					class="fill-current w-4 h-4 mr-3"
@@ -19,7 +21,7 @@
 				Home
 			</a>
 		</li>
-		<li class="hover:bg-primary-600 hover:text-white rounded-lg">
+		<li class="hover:variant-filled-primary hover:text-white rounded-lg">
 			<a href="/clock" on:click={drawerClose}>
 				<svg
 					class="fill-current w-4 h-4 mr-3"
@@ -32,7 +34,7 @@
 				Clock
 			</a>
 		</li>
-		<li class="hover:bg-primary-600 hover:text-white rounded-lg">
+		<li class="hover:variant-filled-primary hover:text-white rounded-lg">
 			<a href="/table" on:click={drawerClose}>
 				<svg
 					class="fill-current w-4 h-4 mr-3"
@@ -45,7 +47,7 @@
 				Table
 			</a>
 		</li>
-		<li class="hover:bg-primary-600 hover:text-white rounded-lg">
+		<li class="hover:variant-filled-primary hover:text-white rounded-lg">
 			<a href="/photos" on:click={drawerClose}>
 				<svg
 					class="fill-current w-4 h-4 mr-3"
@@ -58,7 +60,7 @@
 				Photos
 			</a>
 		</li>
-		<li class="hover:bg-primary-600 hover:text-white rounded-lg">
+		<li class="hover:variant-filled-primary hover:text-white rounded-lg">
 			<a href="/chart" on:click={drawerClose}>
 				<svg
 					class="fill-current w-4 h-4 mr-3"
@@ -71,7 +73,7 @@
 				Chart
 			</a>
 		</li>
-		<li class="hover:bg-primary-600 hover:text-white rounded-lg">
+		<li class="hover:variant-filled-primary hover:text-white rounded-lg">
 			<a href="/tasks" on:click={drawerClose}>
 				<svg
 					class="fill-current w-4 h-4 mr-3"
@@ -84,7 +86,7 @@
 				Tasks
 			</a>
 		</li>
-		<li class="hover:bg-primary-600 hover:text-white rounded-lg">
+		<li class="hover:variant-filled-primary hover:text-white rounded-lg">
 			<a href="/vehicle" on:click={drawerClose}>
 				<svg
 					class="fill-current w-4 h-4 mr-3"
