@@ -10,8 +10,12 @@ async function fetchData() {
 	);
 	const data = await response.json();
 
+	// Create vehicleTitle
+	const vehicleTitle = `${data.ModelYear} ${data.Manufacturer} ${data.ModelName} ${data.Color}`;
+	const expirationDate = new Date(data.ExpirationDate);
+
 	// Update the store with the fetched data
-	store.set(data);
+	store.set({ ...data, vehicleTitle, expirationDate });
 }
 
 // Fetch data when the store is created

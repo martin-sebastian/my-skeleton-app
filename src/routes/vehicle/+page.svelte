@@ -19,13 +19,12 @@
 			<img class="w-full" src={data.ImageUrl} alt="{data.ModelName} - {data.Color}" />
 			<div class="px-6 py-4">
 				<div class="font-bold text-xl mb-2">
-					{data.ModelYear}
-					{data.Manufacturer}
-					{data.ModelName} - {data.Color}
+					{data.vehicleTitle}
 				</div>
 				<p class="text-gray-500 text-base">
 					{data.ManufacturerRebates}
 				</p>
+				<p>{data.expirationDate}</p>
 			</div>
 			<div class="grid grid-flow-col grid-rows-1 grid-cols-5 gap-2">
 				<div>
