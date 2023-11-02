@@ -3,31 +3,9 @@
 
 	// Components
 	import { CodeBlock, LightSwitch, Tab, TabGroup } from '@skeletonlabs/skeleton';
-	import { Avatar } from '@skeletonlabs/skeleton';
-	import { filter, XPro, Noir } from '@skeletonlabs/skeleton';
-
-	import { popup } from '@skeletonlabs/skeleton';
-
-	import { storePopup } from '@skeletonlabs/skeleton';
-	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
-
-	const popupClick = {
-		event: 'click',
-		target: 'popupClick',
-		placement: 'bottom'
-	};
 </script>
 
 <main class="p-8">
-	<div class="card p-8 variant-filled-primary" data-popup="popupClick">
-		<h2>Martin Sebastian</h2>
-		<hr />
-		<p>martinsebastian.io</p>
-		<hr />
-		<p>martinsebastian.io</p>
-		<div class="arrow variant-filled-primary" />
-	</div>
-
 	<div class="container space-y-5">
 		<h1 class="h1">
 			<span
@@ -44,40 +22,38 @@
 			>
 		</h1>
 
-		<p>My framework experiment built with SvelteKit and Tailwind CSS, deployed to Vercel.</p>
-		<button class="btn variant-filled-primary" use:popup={popupClick}>Click</button>
+		<h4 class="h4">
+			My framework experiment built with SvelteKit and Tailwind CSS, deployed to Vercel.
+		</h4>
+
+		<div
+			class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-10"
+		>
+			{#each Array.from({ length: 8 }) as _, i}
+				<div class="snap-start shrink-0 card py-20 w-40 md:w-80 text-center">{i + 1}</div>
+			{/each}
+		</div>
+
 		<p class="text-left w-auto">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum eros nulla, eu pretium
 			massa tristique eu. Ut urna ex, facilisis vitae mattis vel, auctor sed dolor. Sed efficitur
 			tincidunt elit quis dignissim. Nulla nisi tellus, cursus in interdum nec, ultrices vel leo.
 			Sed malesuada ipsum quis enim pulvinar mattis quis lobortis diam. Curabitur elementum cursus
-			orci, eget blandit erat ullamcorper ac. Nam sem odio, malesuada sit amet scelerisque nec,
-			porta id odio. Mauris imperdiet eu odio a vehicula. Nulla vel viverra ipsum, eget congue nunc.
-			Aliquam sed ex a purus venenatis fringilla ut in dolor. Nullam dui metus, cursus vel blandit
-			sed, eleifend ac lectus. Praesent aliquam rhoncus ornare. Lorem ipsum dolor sit amet,
-			consectetur adipiscing elit. Phasellus suscipit tellus ac feugiat blandit. Aenean sit amet
-			diam dictum, pharetra mauris sodales, molestie orci. Quisque sit amet enim vel lorem suscipit
-			laoreet ut sed justo. Ut scelerisque bibendum risus, vel laoreet magna blandit eu. Suspendisse
-			semper, mauris sit amet pretium tempus, diam mi finibus tortor, vel semper magna justo egestas
-			tellus. Praesent id ante eget elit sagittis pretium. Ut dui nibh, pellentesque a pellentesque
-			id, efficitur ac lacus. Sed sit amet dolor risus. Nullam semper dolor eget massa blandit, sit
-			amet commodo enim congue. Aenean sit amet lacinia est. In metus lacus, suscipit non hendrerit
-			facilisis, efficitur vitae mauris. Praesent vulputate nisl eget purus interdum, ac scelerisque
-			quam efficitur. Vestibulum id mauris non lorem faucibus semper nec non tortor. Nam purus
-			dolor, sagittis tempus pulvinar sed, consectetur at velit. Sed mattis hendrerit imperdiet.
-			Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-			Sed interdum nunc quis libero malesuada rhoncus.
+			orci, eget blandit erat ullamcorper ac.
 		</p>
 		<hr />
-
+		<h4 class="h4">Built With These Technologies</h4>
 		<section>
 			<a class="btn variant-filled-primary" href="https://kit.svelte.dev/" target="_blank"
 				>SvelteKit</a
 			>
-			<a class="btn variant-filled-secondary" href="https://tailwindcss.com/" target="_blank"
+			<a class="btn variant-filled-primary" href="https://tailwindcss.com/" target="_blank"
 				>Tailwind</a
 			>
-			<a class="btn variant-filled-tertiary" href="https://github.com/" target="_blank">GitHub</a>
+			<a class="btn variant-filled-primary" href="https://www.skeleton.dev/" target="_blank"
+				>Skeleton</a
+			>
+			<a class="btn variant-filled-primary" href="https://github.com/" target="_blank">GitHub</a>
 		</section>
 		<hr />
 		<p>

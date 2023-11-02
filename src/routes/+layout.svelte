@@ -1,5 +1,6 @@
 <script>
 	import '../app.postcss';
+	import avatarImg from '$lib/assets/martin-300x300.png';
 	import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
@@ -11,8 +12,14 @@
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
+	import { popup } from '@skeletonlabs/skeleton';
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
-	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+	const popupClick = {
+		event: 'click',
+		target: 'popupClick',
+		placement: 'bottom'
+	};
 
 	// Open Close Drawer Functions
 	const drawerStore = getDrawerStore();
@@ -68,27 +75,33 @@
 							>
 						</span>
 					</button>
-
-					<strong class="text-lg uppercase mr-1">Martin</strong>
-					<span class="text-lg uppercase mr-1">Sebastian</span>
+					<strong class="text-lg uppercase mr-1">MS</strong>
 					<span class="variant-filled-primary py-1 px-2 mr-2 rounded">.IO</span>
 				</div>
 			</svelte:fragment>
 
 			<svelte:fragment slot="trail">
 				<LightSwitch />
-				<Avatar
-					initials="MS"
-					background="bg-primary-500"
-					border="border-2 border-primary-400 hover:!border-primary-500"
-					shadow="shadow-sm"
-					cursor="cursor-pointer"
-					src="/src/lib/images/martin-300x300.png"
-					width="w-12"
-					rounded="rounded-full"
-					action={filter}
-					actionParams=""
-				/>
+				<button class="mx-5" use:popup={popupClick}>
+					<Avatar
+						initials="MS"
+						background="bg-primary-500"
+						border="border-2 border-primary-400 hover:!border-primary-500"
+						shadow="shadow-sm"
+						cursor="cursor-pointer"
+						src={avatarImg}
+						width="w-12"
+						rounded="rounded-full"
+						action={filter}
+						actionParams={[Noir]}
+					/>
+				</button>
+				<div class="card p-5 variant-filled-primary" data-popup="popupClick">
+					<h2>Martin Sebastian</h2>
+					<p>martinsebastian.io</p>
+					<p>martinsebastian.io</p>
+					<div class="arrow variant-filled-primary" />
+				</div>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
