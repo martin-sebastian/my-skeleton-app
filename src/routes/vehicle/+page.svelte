@@ -14,7 +14,7 @@
 <main class="p-8">
 	<h1 class="h1 mb-10">Vehicle Data via API</h1>
 
-	{#if data !== 'undefined'}
+	{#if data !== null}
 		<div class="max-w-xl rounded-xl overflow-hidden shadow-lg">
 			<img class="w-full" src={data.ImageUrl} alt="{data.ModelName} - {data.Color}" />
 			<div class="px-6 py-4">
@@ -22,9 +22,9 @@
 					{data.vehicleTitle}
 				</div>
 				<p class="text-gray-500 text-base">
-					{data.ManufacturerRebates}
+					{data.MSRP}
 				</p>
-				<p>{data.expirationDate}</p>
+				<p>{data.formattedDate}</p>
 			</div>
 			<div class="grid grid-flow-col grid-rows-1 grid-cols-5 gap-2">
 				<div>

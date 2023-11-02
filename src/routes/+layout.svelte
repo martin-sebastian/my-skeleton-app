@@ -19,7 +19,7 @@
 	const popupClick = {
 		event: 'click',
 		target: 'popupClick',
-		placement: 'bottom'
+		placement: 'left'
 	};
 
 	// Open Close Drawer Functions
@@ -84,7 +84,7 @@
 
 			<svelte:fragment slot="trail">
 				<LightSwitch />
-				<button class="mx-5" use:popup={popupClick}>
+				<button type="button" class="btn mx-5" use:popup={popupClick}>
 					<Avatar
 						initials="MS"
 						background="bg-primary-500"
@@ -98,10 +98,14 @@
 						actionParams={[Noir]}
 					/>
 				</button>
-				<div class="card p-5 variant-filled-primary" data-popup="popupClick">
-					<h2>Martin Sebastian</h2>
-					<p>martinsebastian.io</p>
-					<p>martinsebastian.io</p>
+				<div class="card p-5 variant-filled-primary shadow-xl" data-popup="popupClick">
+					<h4 class="h4">Martin Sebastian</h4>
+					<a href="https://twitter.com/martisebastian" class="py-1" target="_blank"
+						>@martisebastian</a
+					>
+					<a class="btn variant-ghost btn-md" href="https://martinsebastian.co"
+						>martinsebastian.co</a
+					>
 					<div class="arrow variant-filled-primary" />
 				</div>
 			</svelte:fragment>
@@ -113,9 +117,7 @@
 	<svelte:fragment slot="footer">
 		<div class="container flex flex-row">
 			<div class="flex-auto text-sm m-4 text-gray-500">&copy; 2023 Martin Sebastian</div>
-			<div class="flex-auto text-right m-4 absolute right-0">
-				<LightSwitch />
-			</div>
+			<div class="flex-auto text-right m-4 absolute right-0">V.1</div>
 		</div>
 	</svelte:fragment>
 </AppShell>

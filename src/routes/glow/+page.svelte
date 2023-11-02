@@ -1,6 +1,6 @@
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center flex flex-col items-center">
-		<h2 class="h2 font-bold">Welcome to Skeleton.</h2>
+		<h2 class="h2 font-bold">Glow Animation Demo</h2>
 		<!-- Animated Logo -->
 		<figure>
 			<section class="img-bg" />
@@ -21,13 +21,6 @@
 				Launch Documentation
 			</a>
 		</div>
-		<ul>
-			<li>
-				<code class="code">/src/routes/+layout.svelte</code> - the root layout in your project.
-			</li>
-			<li><code class="code">/src/routes/+page.svelte</code> - the homepage contents.</li>
-			<li><code class="code">/src/app.postcss</code> - your global stylesheet.</li>
-		</ul>
 	</div>
 </div>
 
