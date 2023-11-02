@@ -14,6 +14,15 @@
 	import { CodeBlock, LightSwitch, Tab, TabGroup } from '@skeletonlabs/skeleton';
 </script>
 
+<div class="snap-x scroll-px-0 snap-mandatory scroll-smooth flex gap-2 overflow-x-auto px-1 py-1">
+	{#each images as image, index (index)}
+		<div class="snap-center shrink-0 py-2 px-2 w-full text-center rounded-xl">
+			<img class="rounded-xl" src={image.ImgURL} alt={`Image ${index + 1}`} />
+		</div>
+	{:else}
+		<p>Loading...</p>
+	{/each}
+</div>
 <main class="p-8">
 	<div class="container space-y-5">
 		<h1 class="h1">
@@ -34,16 +43,6 @@
 		<h4 class="h4">
 			My framework experiment built with SvelteKit and Tailwind CSS, deployed to Vercel.
 		</h4>
-
-		<div
-			class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-0 py-1"
-		>
-			{#each images as image, index (index)}
-				<img class="rounded-xl" src={image.ImgURL} alt={`Image ${index + 1}`} />
-			{:else}
-				<p>Loading...</p>
-			{/each}
-		</div>
 
 		<p class="text-left w-auto">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum eros nulla, eu pretium
