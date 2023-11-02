@@ -68,17 +68,15 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<div class="flex items-center">
-					<button class="lg:hidden btn btn-primary" on:click={drawerOpen}>
+				<div class="flex gap-2">
+					<button class="lg:hidden btn-icon" on:click={drawerOpen}>
 						<span>
-							<svg class="fill-token h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+							<svg class="fill-token w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
 								><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg
 							>
 						</span>
 					</button>
-					<span class="text-md font-semibold uppercase mr-1">Martin</span>
-					<span class="text-md uppercase mr-1">Sebastian</span>
-					<span class="variant-filled-primary font-semi py-1 px-2 mr-2 rounded">.IO</span>
+					<img src="/favicon.png" alt="" />
 				</div>
 			</svelte:fragment>
 
@@ -116,7 +114,7 @@
 	<!-- (pageFooter) -->
 	<svelte:fragment slot="footer">
 		<div class="container flex flex-row">
-			<div class="flex-auto text-sm m-4 text-gray-500">&copy; 2023 Martin Sebastian</div>
+			<div class="flex-auto text-sm m-4 text-gray-500">&copy; 2023 MARTINSEBASTIAN.IO</div>
 			<div class="flex-auto text-right m-4 absolute right-0">V.1</div>
 		</div>
 	</svelte:fragment>
