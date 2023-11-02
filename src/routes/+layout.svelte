@@ -9,6 +9,7 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	initializeStores();
+
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
@@ -75,8 +76,9 @@
 							>
 						</span>
 					</button>
-					<strong class="text-lg uppercase mr-1">MS</strong>
-					<span class="variant-filled-primary py-1 px-2 mr-2 rounded">.IO</span>
+					<span class="text-md font-semibold uppercase mr-1">Martin</span>
+					<span class="text-md uppercase mr-1">Sebastian</span>
+					<span class="variant-filled-primary font-semi py-1 px-2 mr-2 rounded">.IO</span>
 				</div>
 			</svelte:fragment>
 
