@@ -14,9 +14,9 @@
 	import { CodeBlock, LightSwitch, Tab, TabGroup } from '@skeletonlabs/skeleton';
 </script>
 
-<div class="snap-x scroll-px-0 snap-mandatory scroll-smooth flex gap-2 overflow-x-auto px-1 py-1">
+<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-1 overflow-x-auto px-2 py-2">
 	{#each images as image, index (index)}
-		<div class="snap-center shrink-0 py-2 px-2 w-full text-center rounded-xl">
+		<div class="snap-center shrink-0 py-2 px-2 w-fit text-center rounded-xl">
 			<img class="rounded-xl" src={image.ImgURL} alt={`Image ${index + 1}`} />
 		</div>
 	{:else}
