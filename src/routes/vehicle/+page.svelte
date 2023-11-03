@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import apiData from './store.js';
+	import apiData from './stores.js';
 
 	let data = {};
 

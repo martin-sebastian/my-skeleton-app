@@ -1,17 +1,25 @@
 <script>
+	import { time, elapsed } from './stores.js';
 	import { onMount } from 'svelte';
 
-	let time = new Date();
+	const formatter = new Intl.DateTimeFormat('en', {
+		hour12: true,
+		hour: 'numeric',
+		minute: '2-digit',
+		second: '2-digit'
+	});
+
+	let ctime = new Date();
 
 	// these automatically update when `time`
 	// changes, because of the `$:` prefix
-	$: hours = time.getHours();
-	$: minutes = time.getMinutes();
-	$: seconds = time.getSeconds();
+	$: hours = ctime.getHours();
+	$: minutes = ctime.getMinutes();
+	$: seconds = ctime.getSeconds();
 
 	onMount(() => {
 		const interval = setInterval(() => {
-			time = new Date();
+			ctime = new Date();
 		}, 1000);
 
 		return () => {
@@ -22,7 +30,8 @@
 
 <main class="p-8">
 	<h1 class="h1 mb-5">Clock</h1>
-	<svg class="" viewBox="-50 -50 100 100">
+
+	<svg class="w-fit lg:w-96 mx-auto" viewBox="-50 -50 100 100">
 		<circle class="clock-face" r="48" />
 
 		<!-- markers -->
@@ -46,15 +55,10 @@
 			<line class="second-counterweight" y1="10" y2="2" />
 		</g>
 	</svg>
+	<h1 class="h1 text-center">{formatter.format($time)}</h1>
 </main>
 
 <style>
-	svg {
-		width: 50%;
-		height: 50%;
-		margin: 0 auto;
-	}
-
 	.clock-face {
 		stroke: #333;
 		fill: white;

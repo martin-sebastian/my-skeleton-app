@@ -32,16 +32,13 @@
 	}
 </script>
 
-<Noir />
-<XPro />
-
 <!-- App Drawer -->
 <Drawer>
 	<div class="flex items-center">
-		<button class="btn btn-primary my-5" on:click={drawerClose}>
+		<button class="btn btn-primary" on:click={drawerClose}>
 			<span>
 				<svg
-					class="fill-token h-5 w-5 ml-3 mt-1"
+					class="fill-token h-5 w-5 ml-2 mt-5 mb-5"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 					><polygon
@@ -68,7 +65,7 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<div class="flex gap-2">
+				<div class="flex gap-1">
 					<button class="lg:hidden btn-icon" on:click={drawerOpen}>
 						<span>
 							<svg class="fill-token w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -76,34 +73,39 @@
 							>
 						</span>
 					</button>
-					<img src="/favicon.png" alt="" />
+					<button>
+						<a href="/"><img src="/favicon.png" alt="" /></a>
+					</button>
 				</div>
 			</svelte:fragment>
 
 			<svelte:fragment slot="trail">
 				<LightSwitch />
-				<button type="button" class="btn mx-5" use:popup={popupClick}>
+				<button type="button" class="btn-icon" use:popup={popupClick}>
 					<Avatar
 						initials="MS"
 						background="bg-primary-500"
-						border="border-2 border-primary-400 hover:!border-primary-500"
+						border="border-2 border-primary-600 hover:!border-primary-900"
 						shadow="shadow-sm"
 						cursor="cursor-pointer"
 						src={avatarImg}
-						width="w-12"
+						width="w-11"
 						rounded="rounded-full"
 						action={filter}
-						actionParams={[Noir]}
+						actionParams=""
 					/>
 				</button>
-				<div class="card p-5 variant-filled-primary shadow-xl" data-popup="popupClick">
-					<h4 class="h4">Martin Sebastian</h4>
-					<a href="https://twitter.com/martisebastian" class="py-1" target="_blank"
-						>@martisebastian</a
-					>
-					<a class="btn variant-ghost btn-md" href="https://martinsebastian.co"
-						>martinsebastian.co</a
-					>
+				<div class="card p-4 variant-filled-primary shadow-xl" data-popup="popupClick">
+					<h4 class="h4 font-semibold">Martin Sebastian</h4>
+					<button class="btn my-1 text-sm flex">
+						<svg class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+							><path
+								d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z"
+							/></svg
+						>
+						<a href="https://twitter.com/martisebastian" class="" target="_blank">@martisebastian</a
+						>
+					</button>
 					<div class="arrow variant-filled-primary" />
 				</div>
 			</svelte:fragment>
