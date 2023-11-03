@@ -35,12 +35,9 @@
 <!-- App Drawer -->
 <Drawer>
 	<div class="flex items-center">
-		<button class="btn btn-primary" on:click={drawerClose}>
+		<button class="btn btn-icon p-5 mx-5 my-2" on:click={drawerClose}>
 			<span>
-				<svg
-					class="fill-token h-5 w-5 ml-2 mt-5 mb-5"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 20 20"
+				<svg class="fill-token h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
 					><polygon
 						points="3.828 9 9.899 2.929 8.485 1.515 0 10 .707 10.707 8.485 18.485 9.899 17.071 3.828 11 20 11 20 9 3.828 9"
 					/></svg
@@ -54,7 +51,7 @@
 
 <!-- App Shell -->
 <AppShell
-	slotHeader="shadow-md"
+	slotHeader="shadow-sm"
 	slotSidebarLeft="bg-surface-500/5 w-0 border-r-0 border-r-surface-200 dark:border-r-surface-500 lg:w-64 lg:border-r"
 >
 	<svelte:fragment slot="sidebarLeft">
@@ -120,7 +117,9 @@
 	<svelte:fragment slot="footer">
 		<div class="container flex flex-row">
 			<div class="flex-auto text-sm m-4 text-gray-500">&copy; 2023 MARTINSEBASTIAN.IO</div>
-			<div class="flex-auto text-right m-4 absolute right-0">V.1</div>
+			<div class="flex-auto text-right m-4 text-gray-500 absolute right-0 badge badge-glass">
+				V.1
+			</div>
 		</div>
 	</svelte:fragment>
 </AppShell>
