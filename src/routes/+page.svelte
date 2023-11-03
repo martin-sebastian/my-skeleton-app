@@ -63,9 +63,6 @@
 			<a class="btn variant-filled-primary mb-1" href="https://www.skeleton.dev/" target="_blank"
 				>Skeleton</a
 			>
-			<a class="btn variant-filled-primary mb-1" href="https://github.com/" target="_blank"
-				>GitHub</a
-			>
 		</section>
 		<hr />
 		<p>
