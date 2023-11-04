@@ -55,7 +55,9 @@
 			<line class="second-counterweight" y1="10" y2="2" />
 		</g>
 	</svg>
-	<h1 class="h1 text-center">{formatter.format($time)}</h1>
+	<div class="card mx-auto w-96">
+		<h1 class="h1 text-center m-5 p-5">{formatter.format($time)}</h1>
+	</div>
 </main>
 
 <style>
