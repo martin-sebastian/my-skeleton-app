@@ -92,7 +92,7 @@
 							</svg>
 						</a>
 					</button>
-					<span class="p-4 block visible sm:hidden"
+					<span class="hidden p-4 lg:block"
 						>MARTIN
 						<span class="font-semibold">SEBASTIAN</span>
 						.IO</span
