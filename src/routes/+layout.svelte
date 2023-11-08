@@ -35,10 +35,10 @@
 
 <!-- App Drawer -->
 <Drawer>
-	<div class="flex items-center">
-		<button class="btn btn-icon p-5 mx-5 my-2" on:click={drawerClose}>
+	<div class="flex items-center py-1">
+		<button class="btn btn-icon mx-1" on:click={drawerClose}>
 			<span>
-				<svg class="fill-token h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+				<svg class="fill-token h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
 					><polygon
 						points="3.828 9 9.899 2.929 8.485 1.515 0 10 .707 10.707 8.485 18.485 9.899 17.071 3.828 11 20 11 20 9 3.828 9"
 					/></svg
@@ -84,9 +84,9 @@
 							</svg>
 						</a>
 						<a href="/">
-							<span class="hidden px-2 lg:block"
+							<span class="hidden lg:block text-gray-200 mx-2"
 								>MARTIN
-								<span class="font-semibold">SEBASTIAN</span>
+								<span class="font-semibold text-gray-400">SEBASTIAN</span>
 								.IO</span
 							>
 						</a>
@@ -114,11 +114,11 @@
 					</a>
 				</button>
 				<LightSwitch />
-				<button type="button" class="btn btn-icon" use:popup={popupClick}>
+				<button type="button" class="btn btn-icon pr-2" use:popup={popupClick}>
 					<Avatar
 						initials="MS"
 						background="bg-primary-500"
-						border="border-2 border-primary-600 hover:!border-primary-900"
+						border="border-2 border-primary-400 hover:!border-primary-500"
 						shadow="shadow-sm"
 						cursor="cursor-pointer"
 						src={avatarImg}
