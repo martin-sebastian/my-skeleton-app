@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import apiData from './stores.js';
+	import { ProgressBar } from '@skeletonlabs/skeleton';
 
 	let data = {};
 
@@ -14,7 +15,10 @@
 <main class="p-8">
 	<h1 class="h1 mb-10">Vehicle Data via API</h1>
 
-	{#if data !== null}
+	{#await $apiData}
+		<h5 class="h5 mb-2 font-semibold">Loading</h5>
+		<ProgressBar value={undefined} />
+	{:then data}
 		<div class="max-w-xl rounded-xl overflow-hidden shadow-lg">
 			<img class="w-full" src={data.ImageUrl} alt="{data.ModelName} - {data.Color}" />
 			<div class="px-6 py-4">
@@ -72,7 +76,7 @@
 		<div class="w-5 h-36" />
 		<hr />
 		<pre class="bg-gray-900">{JSON.stringify(data, null, 2)}</pre>
-	{:else}
-		<p>Loading...</p>
-	{/if}
+	{:catch error}
+		<p>{error.message}</p>
+	{/await}
 </main>

@@ -1,4 +1,5 @@
 <script>
+	import { ProgressBar } from '@skeletonlabs/skeleton';
 	async function fetchVehicles() {
 		const response = await fetch('https://www.flatoutmotorcycles.com/unitinventory_univ.xml');
 		const data = await response.text();
@@ -21,7 +22,8 @@
 <main class="p-8">
 	<h1 class="h1 pb-5">Inventory</h1>
 	{#await vehicles}
-		<p>Loading...</p>
+		<h5 class="h5 mb-2 font-semibold">Loading</h5>
+		<ProgressBar value={undefined} />
 	{:then vehicles}
 		<div class="flex flex-wrap">
 			{#each vehicles as vehicle}
