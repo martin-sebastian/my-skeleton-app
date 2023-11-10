@@ -11,9 +11,12 @@
 			title: item.querySelector('title').textContent,
 			link: item.querySelector('link').textContent,
 			price: item.querySelector('price').textContent,
+			usage: item.querySelector('usage').textContent,
+			vin: item.querySelector('vin').textContent,
+			description: item.querySelector('description').textContent,
 			imageurl: item.querySelector('imageurl').textContent
 		}));
-		//console.log(JSON.stringify(vehicles, null, 2));
+		console.log(JSON.stringify(vehicles, null, 2));
 	}
 
 	let vehicles = fetchVehicles();
@@ -25,15 +28,18 @@
 		<h5 class="h5 mb-2 font-semibold">Loading</h5>
 		<ProgressBar value={undefined} />
 	{:then vehicles}
-		<div class="flex flex-wrap">
+		<div class="flex flex-row flex-wrap">
 			{#each vehicles as vehicle}
-				<div class="card m-1 flex-1">
-					<img class="w-100" src={vehicle.imageurl} alt={vehicle.title} />
-					<header class="card-header" />
+				<div class="card w-full md:w-1/2 lg:w-1/3 rounded-xl p-2">
+					<img class="rounded-xl" src={vehicle.imageurl} alt={vehicle.title} />
+					<header class="card-header">
+						<h5 class="h5 truncate">{vehicle.title}</h5>
+					</header>
 
 					<section class="p-4">
-						<h5 class="h5">{vehicle.title}</h5>
-						<p>{vehicle.stocknumber}</p>
+						<p class="text-sm">{vehicle.stocknumber}</p>
+						<p class="text-sm">{vehicle.vin}</p>
+						<p class="text-sm">{vehicle.price}</p>
 					</section>
 
 					<footer class="card-footer">

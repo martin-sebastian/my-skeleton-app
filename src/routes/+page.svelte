@@ -1,4 +1,6 @@
 <script>
+	import { ProgressBar } from '@skeletonlabs/skeleton';
+
 	let images = [];
 
 	fetch('https://newportal.flatoutmotorcycles.com/portal/public/api/majorunit/stocknumber/P25060')
@@ -14,15 +16,23 @@
 	import { CodeBlock, LightSwitch, Tab, TabGroup } from '@skeletonlabs/skeleton';
 </script>
 
-<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-1 overflow-x-auto px-2 py-2">
-	{#each images as image, index (index)}
-		<div class="snap-center shrink-0 py-2 px-2 w-fit text-center rounded-xl">
-			<img class="rounded-xl" src={image.ImgURL} alt={`Image ${index + 1}`} />
-		</div>
-	{:else}
-		<p>Loading...</p>
-	{/each}
-</div>
+{#await images}
+	<h5 class="h5 mb-2 font-semibold">Loading</h5>
+	<ProgressBar value={undefined} />
+{:then images}
+	<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-1 overflow-x-auto px-2 py-2">
+		{#each images as image, index (index)}
+			<div class="snap-center shrink-0 py-2 px-2 w-full lg:w-1/2 text-center rounded-xl">
+				<img class="rounded-xl" src={image.ImgURL} alt={`Image ${index + 1}`} />
+			</div>
+		{:else}
+			<p>Loading...</p>
+		{/each}
+	</div>
+{:catch error}
+	<p>{error.message}</p>
+{/await}
+
 <main class="p-8">
 	<div class="container space-y-5">
 		<h1 class="h1">
