@@ -84,9 +84,9 @@
 							</svg>
 						</a>
 						<a href="/">
-							<span class="hidden lg:block text-gray-200 mx-2"
+							<span class="hidden lg:block text-current mx-2"
 								>MARTIN
-								<span class="font-semibold text-gray-400">SEBASTIAN</span>
+								<span class="font-semibold text-current">SEBASTIAN</span>
 								.IO</span
 							>
 						</a>
