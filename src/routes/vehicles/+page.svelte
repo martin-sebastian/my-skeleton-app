@@ -37,9 +37,9 @@
 					</header>
 
 					<section class="p-4">
-						<p class="text-sm">{vehicle.stocknumber}</p>
-						<p class="text-sm">{vehicle.vin}</p>
-						<p class="text-sm">{vehicle.price}</p>
+						<p class="text-sm">Stock Num: {vehicle.stocknumber}</p>
+						<p class="text-sm">VIN: {vehicle.vin}</p>
+						<p class="text-sm">Price: {vehicle.price}</p>
 					</section>
 
 					<footer class="card-footer">
