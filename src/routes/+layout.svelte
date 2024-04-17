@@ -9,6 +9,7 @@
 	import { filter, XPro, Noir } from '@skeletonlabs/skeleton';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	import { page } from '$app/stores';
 	initializeStores();
 
 	// Floating UI for Popups
@@ -55,6 +56,27 @@
 	slotHeader="shadow-sm"
 	slotSidebarLeft="bg-surface-500/5 w-0 border-r-0 border-r-surface-200 dark:border-r-surface-500 lg:w-64 lg:border-r"
 >
+	<svelte:fragment slot="sidebarRight">
+		<AppRail>
+			<AppRailAnchor href="/" selected={$page.url.pathname === '/'}>
+				<svg
+					class="fill-current w-8 h-8 mx-auto my-3"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20"><path d="M8 20H3V10H0L10 0l10 10h-3v10h-5v-6H8v6z" /></svg
+				>
+			</AppRailAnchor>
+			<AppRailAnchor href="/clock" selected={$page.url.pathname === '/clock'}>
+				<svg
+					class="fill-current w-8 h-8 mx-auto"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20"
+					><path
+						d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-7.59V4h2v5.59l3.95 3.95-1.41 1.41L9 10.41z"
+					/></svg
+				>
+			</AppRailAnchor>
+		</AppRail>
+	</svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
 		<Navigation />
 	</svelte:fragment>
@@ -152,9 +174,10 @@
 	<!-- (pageFooter) -->
 	<svelte:fragment slot="footer">
 		<div class="container flex flex-row">
+			<img class="ml-4 w-4" alt="The project logo" src={logoSvg} />
 			<div class="flex-auto text-sm m-4 text-gray-500">&copy; 2023 MARTINSEBASTIAN.IO</div>
 			<div class="flex-auto text-right m-4 text-gray-500 absolute right-0 badge badge-glass">
-				V.1
+				V.1.0.0
 			</div>
 		</div>
 	</svelte:fragment>
