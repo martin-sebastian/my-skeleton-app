@@ -6,7 +6,7 @@ const store = writable(null);
 // Function to fetch data from the API
 async function fetchData() {
 	const response = await fetch(
-		'https://newportal.flatoutmotorcycles.com/portal/public/api/majorunit/stocknumber/P25060'
+		'https://newportal.flatoutmotorcycles.com/portal/public/api/majorunit/stocknumber/IND13602'
 	);
 	const data = await response.json();
 
