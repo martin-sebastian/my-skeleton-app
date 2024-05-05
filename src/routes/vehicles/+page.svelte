@@ -6,7 +6,7 @@
 		const parser = new DOMParser();
 		const xml = parser.parseFromString(data, 'application/xml');
 		const items = xml.querySelectorAll('item');
-		vehicles = Array.from(items).map((item) => ({
+		let vehicles = Array.from(items).map((item) => ({
 			stocknumber: item.querySelector('stocknumber').textContent,
 			title: item.querySelector('title').textContent,
 			link: item.querySelector('link').textContent,
