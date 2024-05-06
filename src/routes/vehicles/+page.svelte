@@ -178,6 +178,7 @@
 	@media (max-width: 640px) {
 		.card {
 			width: 50%;
+			z-index: -1;
 		}
 		.vehicle-filters {
 			flex-wrap: wrap;
