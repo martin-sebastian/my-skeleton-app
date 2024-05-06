@@ -175,4 +175,9 @@
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 		transition: box-shadow 0.3s;
 	}
+	@media (max-width: 640px) {
+		.card {
+			width: 40%;
+		}
+	}
 </style>
