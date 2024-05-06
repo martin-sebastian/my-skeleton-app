@@ -147,7 +147,7 @@
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
 				<div class="card card-hover w-64 max-w-64 overflow-hidden">
 					<header class="bg-black/50">
-						<img class="w-64 object-fill" src={vehicle.imageurl} alt={vehicle.title} />
+						<img class="w-100 object-fill" src={vehicle.imageurl} alt={vehicle.title} />
 					</header>
 					<section class="p-4">
 						<p class="text-sm font-semibold">{vehicle.manufacturer}</p>
@@ -171,6 +171,7 @@
 
 <style>
 	.card {
+		width: 23%;
 		border-radius: 0.5rem;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 		transition: box-shadow 0.3s;
