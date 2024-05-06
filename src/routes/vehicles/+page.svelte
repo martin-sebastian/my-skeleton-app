@@ -92,7 +92,7 @@
 </script>
 
 <!-- UI components with new dropdowns -->
-<nav class="bg-surface-500/80 z-40 sticky top-0 flex flex-row gap-3 p-3">
+<nav class="bg-surface-500/90 sticky top-0 flex flex-row gap-3 p-3">
 	<input
 		type="search"
 		bind:value={modelNameQuery}
@@ -145,7 +145,7 @@
 	{:then $displayedVehicles}
 		<div class="flex flex-row flex-wrap grow gap-5">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
-				<div class="card card-hover w-64 overflow-hidden">
+				<div class="card card-hover w-64 max-w-64 overflow-hidden">
 					<header class="bg-black/50">
 						<img class="w-64 object-fill" src={vehicle.imageurl} alt={vehicle.title} />
 					</header>
@@ -168,3 +168,11 @@
 		<p>Error: {error.message}</p>
 	{/await}
 </main>
+
+<style>
+	.card {
+		border-radius: 0.5rem;
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+		transition: box-shadow 0.3s;
+	}
+</style>
