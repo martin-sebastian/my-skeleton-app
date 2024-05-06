@@ -177,7 +177,7 @@
 	}
 	@media (max-width: 640px) {
 		.card {
-			width: 50%;
+			width: 45%;
 			z-index: -1;
 		}
 		.vehicle-filters {
