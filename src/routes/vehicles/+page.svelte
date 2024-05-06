@@ -92,12 +92,12 @@
 </script>
 
 <!-- UI components with new dropdowns -->
-<nav class="bg-surface-500/90 sticky top-0 flex flex-row gap-3 p-3">
+<nav class="vehicle-filters bg-surface-500/90 sticky top-0 flex flex-row gap-3 p-3">
 	<input
 		type="search"
 		bind:value={modelNameQuery}
 		placeholder="Search by Model Name"
-		class="input"
+		class="input search"
 	/>
 	<select class="select" bind:value={selectedYear}>
 		<option value="">All Years</option>
@@ -178,6 +178,12 @@
 	@media (max-width: 640px) {
 		.card {
 			width: 40%;
+		}
+		.vehicle-filters {
+			flex-wrap: wrap;
+		}
+		input.search {
+			width: 100%;
 		}
 	}
 </style>
