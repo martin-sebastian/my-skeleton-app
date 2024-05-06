@@ -1,18 +1,27 @@
 <script>
-	import { ProgressBar } from '@skeletonlabs/skeleton';
+	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
+	import { ProgressBar } from '@skeletonlabs/skeleton';
 
+	let modelNameQuery = '';
 	let selectedManufacturer = '';
 	let selectedYear = '';
 	let selectedModelType = '';
-	let modelNameQuery = ''; // Handle input query for model names
+	let selectedModelTypeStyle = ''; // New filter for model type style
+	let selectedColor = ''; // New filter for color
 	let selectedUsage = '';
 	let manufacturers = writable([]);
 	let years = writable([]);
 	let modelTypes = writable([]);
+	let modelTypeStyles = writable([]); // Store for model type styles
+	let colors = writable([]); // Store for colors
 	let usages = writable([]);
 	let vehicles = writable([]);
 	let displayedVehicles = writable([]);
+
+	onMount(async () => {
+		await fetchVehicles();
+	});
 
 	async function fetchVehicles() {
 		try {
@@ -24,65 +33,66 @@
 			const parser = new DOMParser();
 			const xml = parser.parseFromString(data, 'application/xml');
 			const items = xml.querySelectorAll('item');
-			let fetchedVehicles = Array.from(items).map((item) => {
-				const getTextContent = (selector) => {
-					const element = item.querySelector(selector);
-					return element ? element.textContent : null;
-				};
-				return {
-					manufacturer: getTextContent('manufacturer'),
-					year: getTextContent('year'),
-					modelType: getTextContent('model_type'),
-					modelName: getTextContent('model_name'),
-					usage: getTextContent('usage'),
-					stocknumber: getTextContent('stocknumber'),
-					title: getTextContent('title'),
-					link: getTextContent('link'),
-					price: formatPrice(getTextContent('price')),
-					vin: getTextContent('vin'),
-					description: getTextContent('description'),
-					metric_type: getTextContent('metric_type'),
-					metric_value: getTextContent('metric_value'),
-					imageurl: getTextContent('imageurl')
-				};
-			});
+			let fetchedVehicles = Array.from(items).map((item) => parseVehicle(item));
 			vehicles.set(fetchedVehicles);
 			manufacturers.set(
 				[...new Set(fetchedVehicles.map((vehicle) => vehicle.manufacturer))].sort()
 			);
-			years.set([...new Set(fetchedVehicles.map((vehicle) => vehicle.year))].sort((a, b) => b - a)); // Sort years in descending order
-			modelTypes.set([...new Set(fetchedVehicles.map((vehicle) => vehicle.modelType))].sort());
+			years.set([...new Set(fetchedVehicles.map((vehicle) => vehicle.year))].sort((a, b) => b - a));
+			modelTypes.set([...new Set(fetchedVehicles.map((vehicle) => vehicle.model_type))].sort());
+			modelTypeStyles.set(
+				[...new Set(fetchedVehicles.map((vehicle) => vehicle.model_typestyle))].sort()
+			); // Set model type styles
+			colors.set([...new Set(fetchedVehicles.map((vehicle) => vehicle.color))].sort()); // Set colors
 			usages.set([...new Set(fetchedVehicles.map((vehicle) => vehicle.usage))].sort());
 		} catch (error) {
-			console.error(error);
-			throw error;
+			console.error('Failed to fetch vehicles:', error);
 		}
+	}
+
+	function parseVehicle(item) {
+		const getTextContent = (selector) => {
+			const element = item.querySelector(selector);
+			return element ? element.textContent : null;
+		};
+		return {
+			manufacturer: getTextContent('manufacturer'),
+			year: getTextContent('year'),
+			model_type: getTextContent('model_type'),
+			model_typestyle: getTextContent('model_typestyle'), // Extract model type style
+			color: getTextContent('color'), // Extract color
+			model_name: getTextContent('model_name'),
+			usage: getTextContent('usage'),
+			stocknumber: getTextContent('stocknumber'),
+			title: getTextContent('title'),
+			link: getTextContent('link'),
+			price: formatPrice(getTextContent('price')),
+			vin: getTextContent('vin'),
+			description: getTextContent('description'),
+			imageurl: getTextContent('imageurl')
+		};
 	}
 
 	function formatPrice(price) {
 		return Number(price) ? `$${Number(price).toLocaleString('en-US')}` : 'N/A';
 	}
 
-	// Update displayed vehicles reactively based on filters
-	$: {
-		displayedVehicles.set(
-			$vehicles.filter(
-				(vehicle) =>
-					(selectedManufacturer ? vehicle.manufacturer === selectedManufacturer : true) &&
-					(selectedYear ? vehicle.year === selectedYear : true) &&
-					(selectedModelType ? vehicle.modelType === selectedModelType : true) &&
-					(modelNameQuery
-						? vehicle.modelName.toLowerCase().includes(modelNameQuery.toLowerCase())
-						: true) &&
-					(selectedUsage ? vehicle.usage === selectedUsage : true)
-			)
-		);
-	}
-
-	fetchVehicles();
+	$: displayedVehicles.set(
+		$vehicles.filter(
+			(vehicle) =>
+				(!modelNameQuery || vehicle.title.toLowerCase().includes(modelNameQuery.toLowerCase())) &&
+				(!selectedManufacturer || vehicle.manufacturer === selectedManufacturer) &&
+				(!selectedYear || vehicle.year === selectedYear) &&
+				(!selectedModelType || vehicle.model_type === selectedModelType) &&
+				(!selectedModelTypeStyle || vehicle.model_typestyle === selectedModelTypeStyle) && // Filter by model type style
+				(!selectedColor || vehicle.color === selectedColor) && // Filter by color
+				(!selectedUsage || vehicle.usage === selectedUsage)
+		)
+	);
 </script>
 
-<nav class="bg-surface-500/5 z-40 sticky top-0 flex flex-row gap-3 p-4">
+<!-- UI components with new dropdowns -->
+<nav class="bg-surface-500/80 z-40 sticky top-0 flex flex-row gap-3 p-3">
 	<input
 		type="search"
 		bind:value={modelNameQuery}
@@ -107,6 +117,18 @@
 			<option value={modelType}>{modelType}</option>
 		{/each}
 	</select>
+	<select class="select" bind:value={selectedModelTypeStyle}>
+		<option value="">All Model Type Styles</option>
+		{#each $modelTypeStyles as modelTypeStyle}
+			<option value={modelTypeStyle}>{modelTypeStyle}</option>
+		{/each}
+	</select>
+	<select class="select" bind:value={selectedColor}>
+		<option value="">All Colors</option>
+		{#each $colors as color}
+			<option value={color}>{color}</option>
+		{/each}
+	</select>
 	<select class="select" bind:value={selectedUsage}>
 		<option value="">All Usages</option>
 		{#each $usages as usage}
@@ -115,12 +137,13 @@
 	</select>
 </nav>
 
-<main class="px-5">
-	{#await $vehicles}
-		<h5 class="h5 mb-2 font-semibold">Loading...</h5>
-		<ProgressBar value={undefined} />
-	{:then vehicles}
-		<div class="flex flex-row flex-wrap grow gap-3">
+<!-- The rest of your component -->
+<main class="p-5">
+	{#await $displayedVehicles}
+		<h5 class="h5 my-5 py-5 font-semibold">Loading...</h5>
+		<ProgressBar />
+	{:then $displayedVehicles}
+		<div class="flex flex-row flex-wrap grow gap-5">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
 				<div class="card card-hover w-64 overflow-hidden">
 					<header class="bg-black/50">
@@ -131,6 +154,7 @@
 						<p class="text-sm font-semibold">{vehicle.title}</p>
 						<p class="text-sm text-gray-500">VIN: {vehicle.vin}</p>
 						<p class="text-sm text-gray-500">Price: {vehicle.price}</p>
+						<p class="text-sm text-gray-500 font-semibold">Stock #: {vehicle.stocknumber}</p>
 					</section>
 					<footer class="card-footer p-2">
 						<a href={vehicle.link} class="btn btn-sm variant-filled w-full" target="_blank"
