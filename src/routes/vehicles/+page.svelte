@@ -91,7 +91,7 @@
 </script>
 
 <!-- UI components with new dropdowns -->
-<nav class="vehicle-filters bg-surface-500/90 sticky top-0 flex flex-row gap-3 p-3">
+<nav class="vehicle-filters bg-surface-500/90 sticky top-0 flex flex-row z-50 gap-3 p-3">
 	<input
 		type="search"
 		bind:value={modelNameQuery}
@@ -142,22 +142,32 @@
 		<h5 class="h5 my-5 py-5 font-semibold">Loading...</h5>
 		<ProgressBar />
 	{:then $displayedVehicles}
-		<div class="flex flex-row flex-wrap grow gap-5">
+		<div class="flex flex-row flex-wrap grow-0 gap-4">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
-				<div class="card card-hover w-64 max-w-64 overflow-hidden">
+				<div class="relative card card-hover shrink-0 w-80 h-128 overflow-hidden">
 					<header class="bg-black/50">
-						<img class="w-100 object-fill" src={vehicle.imageurl} alt={vehicle.title} />
+						<img class="object-fill" src={vehicle.imageurl} alt={vehicle.title} />
 					</header>
-					<section class="p-4">
-						<p class="text-sm font-semibold">{vehicle.manufacturer}</p>
+					<section class="p-4 mb-10">
 						<p class="text-sm font-semibold">{vehicle.title}</p>
 						<p class="text-sm text-gray-500">VIN: {vehicle.vin}</p>
 						<p class="text-sm text-gray-500">Price: {vehicle.price}</p>
 						<p class="text-sm text-gray-500 font-semibold">Stock #: {vehicle.stocknumber}</p>
-						<span class="text-sm text-gray-500">{vehicle.Style}</span>
+						<span
+							class="inline-flex items-center rounded-md bg-red-500 px-2 py-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							>{vehicle.manufacturer}</span
+						>
+						<span
+							class="inline-flex items-center rounded-md bg-blue-500 px-2 py-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							>{vehicle.model_type}</span
+						>
+						<span
+							class="inline-flex items-center rounded-md bg-orange-500 px-2 py-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							>{vehicle.model_typestyle}</span
+						>
 					</section>
-					<footer class="card-footer p-2">
-						<a href={vehicle.link} class="btn btn-sm variant-filled w-full" target="_blank"
+					<footer class="card-footer p-2 absolute inset-x-0 bottom-0 h-12 ...">
+						<a href={vehicle.link} class="btn btn-sm variant-filled" target="_blank"
 							>Open web page</a
 						>
 					</footer>
@@ -170,7 +180,7 @@
 </main>
 
 <style>
-	.card {
+	.cardxxx {
 		width: 23%;
 		border-radius: 0.5rem;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
