@@ -88,6 +88,15 @@
 				(!selectedUsage || vehicle.usage === selectedUsage)
 		)
 	);
+	function clearFilters() {
+		modelNameQuery = '';
+		selectedManufacturer = '';
+		selectedYear = '';
+		selectedModelType = '';
+		selectedModelTypeStyle = '';
+		selectedColor = '';
+		selectedUsage = '';
+	}
 </script>
 
 <!-- UI components with new dropdowns -->
@@ -134,6 +143,7 @@
 			<option value={usage}>{usage}</option>
 		{/each}
 	</select>
+	<button class="btn clear-filters" on:click={clearFilters}> Clear </button>
 </nav>
 
 <!-- The rest of your component -->
@@ -142,9 +152,9 @@
 		<h5 class="h5 my-5 py-5 font-semibold">Loading...</h5>
 		<ProgressBar />
 	{:then $displayedVehicles}
-		<div class="flex flex-row flex-wrap grow-0 gap-4">
+		<div class="flex flex-row flex-wrap grow-1 gap-4">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
-				<div class="relative card card-hover shrink-0 w-80 h-128 overflow-hidden">
+				<div class="relative card card-hover shrink-0 w-72 h-140 overflow-hidden">
 					<header class="bg-black/50">
 						<img class="object-fill" src={vehicle.imageurl} alt={vehicle.title} />
 					</header>
@@ -154,16 +164,20 @@
 						<p class="text-sm text-gray-500">Price: {vehicle.price}</p>
 						<p class="text-sm text-gray-500 font-semibold">Stock #: {vehicle.stocknumber}</p>
 						<span
-							class="inline-flex items-center rounded-md bg-red-500 px-2 py-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							class="inline-flex items-center rounded-md bg-red-500 px-2 py-1 my-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
 							>{vehicle.manufacturer}</span
 						>
 						<span
-							class="inline-flex items-center rounded-md bg-blue-500 px-2 py-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							class="inline-flex items-center rounded-md bg-blue-500 px-2 py-1 my-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
 							>{vehicle.model_type}</span
 						>
 						<span
-							class="inline-flex items-center rounded-md bg-orange-500 px-2 py-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							class="inline-flex items-center rounded-md bg-orange-500 px-2 py-1 my-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
 							>{vehicle.model_typestyle}</span
+						>
+						<span
+							class="inline-flex items-center rounded-md bg-gray-500 px-2 py-1 my-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							>{vehicle.color}</span
 						>
 					</section>
 					<footer class="card-footer p-2 absolute inset-x-0 bottom-0 h-12 ...">
@@ -180,17 +194,7 @@
 </main>
 
 <style>
-	.cardxxx {
-		width: 23%;
-		border-radius: 0.5rem;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-		transition: box-shadow 0.3s;
-	}
 	@media (max-width: 640px) {
-		.card {
-			width: 49%;
-			z-index: -1;
-		}
 		.vehicle-filters {
 			flex-wrap: wrap;
 		}
