@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { ProgressBar } from '@skeletonlabs/skeleton';
-
 	let modelNameQuery = '';
 	let selectedManufacturer = '';
 	let selectedYear = '';
@@ -155,6 +154,7 @@
 						<p class="text-sm text-gray-500">VIN: {vehicle.vin}</p>
 						<p class="text-sm text-gray-500">Price: {vehicle.price}</p>
 						<p class="text-sm text-gray-500 font-semibold">Stock #: {vehicle.stocknumber}</p>
+						<span class="text-sm text-gray-500">{vehicle.Style}</span>
 					</section>
 					<footer class="card-footer p-2">
 						<a href={vehicle.link} class="btn btn-sm variant-filled w-full" target="_blank"
