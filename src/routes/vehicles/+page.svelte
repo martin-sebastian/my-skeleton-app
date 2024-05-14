@@ -2,13 +2,15 @@
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { ProgressBar } from '@skeletonlabs/skeleton';
-	let modelNameQuery = '';
+
+	let searchQuery = ''; // Combined search query for model name, stock number, VIN number, and color
 	let selectedManufacturer = '';
 	let selectedYear = '';
 	let selectedModelType = '';
 	let selectedModelTypeStyle = ''; // New filter for model type style
 	let selectedColor = ''; // New filter for color
 	let selectedUsage = '';
+
 	let manufacturers = writable([]);
 	let years = writable([]);
 	let modelTypes = writable([]);
@@ -79,7 +81,11 @@
 	$: displayedVehicles.set(
 		$vehicles.filter(
 			(vehicle) =>
-				(!modelNameQuery || vehicle.title.toLowerCase().includes(modelNameQuery.toLowerCase())) &&
+				(!searchQuery ||
+					vehicle.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+					vehicle.stocknumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+					vehicle.vin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+					vehicle.color.toLowerCase().includes(searchQuery.toLowerCase())) && // Add color filter to search query
 				(!selectedManufacturer || vehicle.manufacturer === selectedManufacturer) &&
 				(!selectedYear || vehicle.year === selectedYear) &&
 				(!selectedModelType || vehicle.model_type === selectedModelType) &&
@@ -88,8 +94,9 @@
 				(!selectedUsage || vehicle.usage === selectedUsage)
 		)
 	);
+
 	function clearFilters() {
-		modelNameQuery = '';
+		searchQuery = ''; // Clear combined search query
 		selectedManufacturer = '';
 		selectedYear = '';
 		selectedModelType = '';
@@ -99,12 +106,12 @@
 	}
 </script>
 
-<!-- UI components with new dropdowns -->
+<!-- UI components with a single input field for combined search -->
 <nav class="vehicle-filters bg-surface-500/90 sticky top-0 flex flex-row z-50 gap-3 p-3">
 	<input
 		type="search"
-		bind:value={modelNameQuery}
-		placeholder="Search by Model Name"
+		bind:value={searchQuery}
+		placeholder="Search by Model Name, Stock Number, VIN, or Color"
 		class="input search"
 	/>
 	<select class="select" bind:value={selectedYear}>
@@ -152,19 +159,26 @@
 		<h5 class="h5 my-5 py-5 font-semibold">Loading...</h5>
 		<ProgressBar />
 	{:then $displayedVehicles}
-		<div class="flex flex-row flex-wrap grow-1 gap-4">
+		<div class="flex flex-row flex-wrap justify-start items-stretch gap-4">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
-				<div class="relative card card-hover shrink-0 w-72 h-140 overflow-hidden">
-					<header class="bg-black/50">
-						<img class="object-fill" src={vehicle.imageurl} alt={vehicle.title} />
+				<div
+					class="card card-hover bg-surface-500/10 border border-gray-300/10 w-80 overflow-hidden"
+				>
+					<header class="bg-gray-300/10 overflow-hidden">
+						<img
+							class="object-cover w-auto aspect-16/9"
+							src={vehicle.imageurl}
+							alt={vehicle.title}
+						/>
 					</header>
-					<section class="p-4 mb-10">
-						<p class="text-sm font-semibold">{vehicle.title}</p>
-						<p class="text-sm text-gray-500">VIN: {vehicle.vin}</p>
-						<p class="text-sm text-gray-500">Price: {vehicle.price}</p>
+					<section class="p-4 h-48">
+						<p class="text-sm font-semibold text-current my-1">{vehicle.title}</p>
 						<p class="text-sm text-gray-500 font-semibold">Stock #: {vehicle.stocknumber}</p>
+						<p class="text-sm text-gray-500">VIN: {vehicle.vin}</p>
+						<p class="text-sm font-bold text-current my-1">Price: {vehicle.price}</p>
+
 						<span
-							class="inline-flex items-center rounded-md bg-red-500 px-2 py-1 my-1 text-xs font-medium text-white-600 ring-1 ring-inset ring-gray-500/10"
+							class="inline-flex items-center rounded-md bg-red-500 px-2 py-1 my-1 text-xs font-medium text-current ring-1 ring-inset ring-gray-500/10"
 							>{vehicle.manufacturer}</span
 						>
 						<span
@@ -180,9 +194,9 @@
 							>{vehicle.color}</span
 						>
 					</section>
-					<footer class="card-footer p-2 absolute inset-x-0 bottom-0 h-12 ...">
-						<a href={vehicle.link} class="btn btn-sm variant-filled" target="_blank"
-							>Open web page</a
+					<footer class="card-footer py-3">
+						<a href={vehicle.link} class="btn btn-sm variant-filled-primary" target="_blank"
+							>Goto web page</a
 						>
 					</footer>
 				</div>
