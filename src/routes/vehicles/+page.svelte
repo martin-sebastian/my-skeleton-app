@@ -115,7 +115,7 @@
 <!-- UI components with a single input field for combined search -->
 <button class="mobile-filter-button" on:click={toggleDrawer}>Filter</button>
 <nav
-	class="vehicle-filters bg-surface-500/90 sticky top-0 flex flex-row z-50 gap-3 p-3 hidden lg:flex"
+	class="vehicle-filters bg-surface-500 sticky top-0 flex flex-row z-50 gap-3 p-3 hidden lg:flex"
 >
 	<!-- Existing filter content here -->
 	<input
@@ -165,48 +165,53 @@
 
 <!-- Drawer for mobile -->
 <div class:drawer-open={isDrawerOpen} class="drawer lg:hidden bg-surface-500/100">
-	<div class="drawer-content">
-		<button type="button" class="drawer-close btn variant-filled-surface" on:click={toggleDrawer}
-			>Close</button
+	<div class="drawer-content p-2">
+		<button type="button" class="drawer-close btn btn-icon" on:click={toggleDrawer}
+			><svg class="fill-token h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+				><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
+					d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+				/></svg
+			></button
 		>
+		<hr class="mb-2" />
 		<!-- Filter content duplicated here -->
 		<input
 			type="search"
 			bind:value={searchQuery}
 			placeholder="Search by Model Name, Stock Number, VIN, or Color"
-			class="input search"
+			class="input search m-1 p-2"
 		/>
-		<select class="select" bind:value={selectedYear}>
+		<select class="select m-1" bind:value={selectedYear}>
 			<option value="">All Years</option>
 			{#each $years as year}
 				<option value={year}>{year}</option>
 			{/each}
 		</select>
-		<select class="select" bind:value={selectedManufacturer}>
+		<select class="select m-1" bind:value={selectedManufacturer}>
 			<option value="">All Manufacturers</option>
 			{#each $manufacturers as manufacturer}
 				<option value={manufacturer}>{manufacturer}</option>
 			{/each}
 		</select>
-		<select class="select" bind:value={selectedModelType}>
+		<select class="select m-1" bind:value={selectedModelType}>
 			<option value="">All Model Types</option>
 			{#each $modelTypes as modelType}
 				<option value={modelType}>{modelType}</option>
 			{/each}
 		</select>
-		<select class="select" bind:value={selectedModelTypeStyle}>
+		<select class="select m-1" bind:value={selectedModelTypeStyle}>
 			<option value="">All Model Type Styles</option>
 			{#each $modelTypeStyles as modelTypeStyle}
 				<option value={modelTypeStyle}>{modelTypeStyle}</option>
 			{/each}
 		</select>
-		<select class="select" bind:value={selectedColor}>
+		<select class="select m-1" bind:value={selectedColor}>
 			<option value="">All Colors</option>
 			{#each $colors as color}
 				<option value={color}>{color}</option>
 			{/each}
 		</select>
-		<select class="select" bind:value={selectedUsage}>
+		<select class="select m-1" bind:value={selectedUsage}>
 			<option value="">All Usages</option>
 			{#each $usages as usage}
 				<option value={usage}>{usage}</option>
@@ -217,10 +222,10 @@
 </div>
 
 <!-- The rest of your component -->
-<main class="p-5">
+<main class="p-5 mt-10">
 	{#await $displayedVehicles}
 		<h5 class="h5 my-5 py-5 font-semibold">Loading...</h5>
-		<ProgressBar />
+		<ProgressBar value={undefined} />
 	{:then $displayedVehicles}
 		<div class="flex flex-row flex-wrap justify-start items-stretch gap-4">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
@@ -278,7 +283,6 @@
 		width: 80%;
 		max-width: 300px;
 		height: 100%;
-
 		box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 		transition: right 0.3s ease;
 		z-index: 1000;
@@ -288,16 +292,9 @@
 		right: 0;
 	}
 
-	.drawer-content {
-		padding: 20px;
-	}
-
 	.drawer-close {
-		background: none;
-		border: none;
-
-		font-size: 20px;
 		cursor: pointer;
+		padding: 5px 0;
 	}
 
 	.mobile-filter-button {
