@@ -1,7 +1,7 @@
 <script>
 	let images = [];
 
-	fetch('https://newportal.flatoutmotorcycles.com/portal/public/api/majorunit/stocknumber/IND13602')
+	fetch('https://newportal.flatoutmotorcycles.com/portal/public/api/majorunit/stocknumber/SCSC177')
 		.then((response) => response.json())
 		.then((data) => {
 			if (data.Images && Array.isArray(data.Images)) {

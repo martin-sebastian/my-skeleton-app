@@ -53,7 +53,7 @@
 <!-- App Shell -->
 <AppShell
 	slotHeader="shadow-sm"
-	slotSidebarLeft="bg-surface-500/5 w-0 border-r-0 border-r-surface-200 dark:border-r-surface-500 lg:w-64 lg:border-r"
+	slotSidebarLeft="bg-surface-500/20 w-0 border-r-0 border-r-surface-200 dark:border-r-surface-500 lg:w-64 lg:border-r"
 >
 	<svelte:fragment slot="sidebarLeft">
 		<Navigation />
