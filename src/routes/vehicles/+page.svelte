@@ -113,7 +113,11 @@
 </script>
 
 <!-- UI components with a single input field for combined search -->
-<button class="mobile-filter-button" on:click={toggleDrawer}>Filter</button>
+<button
+	type="button"
+	class="mobile-filter-button btn variant-filled-primary"
+	on:click={toggleDrawer}>Filter</button
+>
 <nav
 	class="vehicle-filters bg-surface-500 sticky top-0 flex flex-row z-50 gap-3 p-3 hidden lg:flex"
 >
@@ -179,45 +183,47 @@
 			type="search"
 			bind:value={searchQuery}
 			placeholder="Search by Model Name, Stock Number, VIN, or Color"
-			class="input search m-1 p-2"
+			class="input search m-1 pl-4"
 		/>
-		<select class="select m-1" bind:value={selectedYear}>
+		<select class="select m-1 pl-4" bind:value={selectedYear}>
 			<option value="">All Years</option>
 			{#each $years as year}
 				<option value={year}>{year}</option>
 			{/each}
 		</select>
-		<select class="select m-1" bind:value={selectedManufacturer}>
+		<select class="select m-1 pl-4" bind:value={selectedManufacturer}>
 			<option value="">All Manufacturers</option>
 			{#each $manufacturers as manufacturer}
 				<option value={manufacturer}>{manufacturer}</option>
 			{/each}
 		</select>
-		<select class="select m-1" bind:value={selectedModelType}>
+		<select class="select m-1 pl-4" bind:value={selectedModelType}>
 			<option value="">All Model Types</option>
 			{#each $modelTypes as modelType}
 				<option value={modelType}>{modelType}</option>
 			{/each}
 		</select>
-		<select class="select m-1" bind:value={selectedModelTypeStyle}>
+		<select class="select m-1 pl-4" bind:value={selectedModelTypeStyle}>
 			<option value="">All Model Type Styles</option>
 			{#each $modelTypeStyles as modelTypeStyle}
 				<option value={modelTypeStyle}>{modelTypeStyle}</option>
 			{/each}
 		</select>
-		<select class="select m-1" bind:value={selectedColor}>
+		<select class="select m-1 pl-4" bind:value={selectedColor}>
 			<option value="">All Colors</option>
 			{#each $colors as color}
 				<option value={color}>{color}</option>
 			{/each}
 		</select>
-		<select class="select m-1" bind:value={selectedUsage}>
+		<select class="select m-1 pl-4" bind:value={selectedUsage}>
 			<option value="">All Usages</option>
 			{#each $usages as usage}
 				<option value={usage}>{usage}</option>
 			{/each}
 		</select>
-		<button class="btn clear-filters" on:click={clearFilters}> Clear </button>
+		<button class="btn variant-filled-primary clear-filters m-2" on:click={clearFilters}>
+			Clear
+		</button>
 	</div>
 </div>
 
@@ -299,12 +305,6 @@
 
 	.mobile-filter-button {
 		display: block;
-		margin: 10px;
-		background: none;
-		border: 1px solid black;
-		border-radius: 5px;
-		padding: 10px;
-		cursor: pointer;
 	}
 
 	@media (min-width: 1024px) {
