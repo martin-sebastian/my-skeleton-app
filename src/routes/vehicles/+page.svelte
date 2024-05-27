@@ -160,7 +160,7 @@
 			<option value={usage}>{usage}</option>
 		{/each}
 	</select>
-	<button class="btn clear-filters" on:click={clearFilters}> Clear </button>
+	<button type="button" class="btn clear-filters" on:click={clearFilters}> Clear </button>
 </nav>
 
 <!-- Drawer for mobile -->
