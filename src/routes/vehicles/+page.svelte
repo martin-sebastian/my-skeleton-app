@@ -304,7 +304,7 @@
 		display: block;
 		margin: 10px;
 		background: none;
-		border: 1px solid black;
+		border: 5px solid black;
 		border-radius: 5px;
 		padding: 10px;
 		cursor: pointer;
