@@ -1,4 +1,5 @@
 <script>
+	// Existing imports and state variables
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { ProgressBar } from '@skeletonlabs/skeleton';
@@ -10,6 +11,7 @@
 	let selectedModelTypeStyle = ''; // New filter for model type style
 	let selectedColor = ''; // New filter for color
 	let selectedUsage = '';
+	let isTableView = false; // State for view type
 
 	let manufacturers = writable([]);
 	let years = writable([]);
@@ -110,6 +112,10 @@
 	function toggleDrawer() {
 		isDrawerOpen = !isDrawerOpen;
 	}
+
+	function toggleView() {
+		isTableView = !isTableView;
+	}
 </script>
 
 <!-- UI components with a single input field for combined search -->
@@ -118,10 +124,10 @@
 	class="mobile-filter-button btn variant-filled-primary"
 	on:click={toggleDrawer}>Filter</button
 >
-<nav
-	class="vehicle-filters bg-surface-500 sticky top-0 flex flex-row z-50 gap-3 p-3 hidden lg:flex"
->
-	<!-- Existing filter content here -->
+<nav class="vehicle-filters bg-surface-500 sticky top-0 flex-row z-50 gap-3 p-3 hidden lg:flex">
+	<button type="button" class="btn variant-filled-secondary" on:click={toggleView}>
+		{isTableView ? 'Show Card View' : 'Show Table View'}
+	</button>
 	<input
 		type="search"
 		bind:value={searchQuery}
@@ -227,12 +233,53 @@
 	</div>
 </div>
 
-<!-- The rest of your component -->
+<!-- Conditionally render the card view or table view -->
 <main class="p-5 mt-10">
-	{#await $displayedVehicles}
-		<h5 class="h5 my-5 py-5 font-semibold">Loading...</h5>
-		<ProgressBar value={undefined} />
-	{:then $displayedVehicles}
+	{#if isTableView}
+		<h2 class="text-2xl font-bold my-5">Table View</h2>
+		<table class="table-auto w-full border-collapse border border-gray-200">
+			<thead>
+				<tr>
+					<th class="border border-gray-300 px-4 py-2">Image</th>
+					<th class="border border-gray-300 px-4 py-2">Title</th>
+					<th class="border border-gray-300 px-4 py-2">Manufacturer</th>
+					<th class="border border-gray-300 px-4 py-2">Year</th>
+					<th class="border border-gray-300 px-4 py-2">Model Type</th>
+					<th class="border border-gray-300 px-4 py-2">Model Type Style</th>
+					<th class="border border-gray-300 px-4 py-2">Color</th>
+					<th class="border border-gray-300 px-4 py-2">Stock Number</th>
+					<th class="border border-gray-300 px-4 py-2">VIN</th>
+					<th class="border border-gray-300 px-4 py-2">Price</th>
+					<th class="border border-gray-300 px-4 py-2">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each $displayedVehicles as vehicle (vehicle.vin)}
+					<tr>
+						<td class="border border-gray-300 px-4 py-2">
+							<img src={vehicle.imageurl} alt={vehicle.title} class="w-20 h-auto object-cover" />
+						</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.title}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.manufacturer}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.year}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.model_type}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.model_typestyle}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.color}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.stocknumber}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.vin}</td>
+						<td class="border border-gray-300 px-4 py-2">{vehicle.price}</td>
+						<td class="border border-gray-300 px-4 py-2">
+							<a
+								href={`/vehicles/${vehicle.vin}`}
+								class="btn btn-sm variant-filled-primary"
+								target="_blank">View Details</a
+							>
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	{:else}
 		<div class="flex flex-row flex-wrap justify-start items-stretch gap-4">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
 				<div
@@ -269,16 +316,14 @@
 						>
 					</section>
 					<footer class="card-footer py-3">
-						<a href={vehicle.link} class="btn btn-sm variant-filled-primary" target="_blank"
-							>Goto web page</a
+						<a href={`/vehicles/${vehicle.vin}`} class="btn btn-sm variant-filled-primary"
+							>View Vehicle Details</a
 						>
 					</footer>
 				</div>
 			{/each}
 		</div>
-	{:catch error}
-		<p>Error: {error.message}</p>
-	{/await}
+	{/if}
 </main>
 
 <style>
