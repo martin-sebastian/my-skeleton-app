@@ -1,5 +1,6 @@
 <script>
 	// Existing imports and state variables
+	import { lazyLoad } from '$lib/LazyLoad/lazyload';
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -260,7 +261,11 @@
 					{#each $displayedVehicles as vehicle (vehicle.vin)}
 						<tr>
 							<td>
-								<img src={vehicle.imageurl} alt={vehicle.title} class="w-20 h-auto object-cover" />
+								<img
+									use:lazyLoad={vehicle.imageurl}
+									alt={vehicle.title}
+									class="w-20 h-auto object-cover"
+								/>
 							</td>
 							<td>{vehicle.title}</td>
 							<td>{vehicle.manufacturer}</td>
