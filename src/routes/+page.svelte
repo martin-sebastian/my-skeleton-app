@@ -1,5 +1,6 @@
 <script>
 	import { ProgressBar } from '@skeletonlabs/skeleton';
+	import { lazyLoad } from '$lib/LazyLoad/lazyload';
 
 	let images = [];
 
@@ -23,7 +24,7 @@
 	<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-1 overflow-x-auto px-2 py-2">
 		{#each images as image, index (index)}
 			<div class="snap-center shrink-0 py-2 px-2 w-full lg:w-1/2 text-center rounded-xl">
-				<img class="rounded-xl" src={image.ImgURL} alt={`Image ${index + 1}`} />
+				<img class="rounded-xl" use:lazyLoad={image.ImgURL} alt={`Image ${index + 1}`} />
 			</div>
 		{:else}
 			<p>Loading...</p>
