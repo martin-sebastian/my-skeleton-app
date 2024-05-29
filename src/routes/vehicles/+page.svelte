@@ -2,7 +2,6 @@
 	// Existing imports and state variables
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
-	import { ProgressBar } from '@skeletonlabs/skeleton';
 
 	let searchQuery = ''; // Combined search query for model name, stock number, VIN number, and color
 	let selectedManufacturer = '';
@@ -12,7 +11,6 @@
 	let selectedColor = ''; // New filter for color
 	let selectedUsage = '';
 	let isTableView = false; // State for view type
-
 	let manufacturers = writable([]);
 	let years = writable([]);
 	let modelTypes = writable([]);
@@ -227,7 +225,11 @@
 				<option value={usage}>{usage}</option>
 			{/each}
 		</select>
-		<button class="btn variant-filled-primary clear-filters m-2" on:click={clearFilters}>
+		<button
+			type="button"
+			class="btn variant-filled-primary clear-filters m-2"
+			on:click={clearFilters}
+		>
 			Clear
 		</button>
 	</div>
@@ -237,48 +239,48 @@
 <main class="p-5 mt-10">
 	{#if isTableView}
 		<h2 class="text-2xl font-bold my-5">Table View</h2>
-		<table class="table-auto w-full border-collapse border border-gray-200">
-			<thead>
-				<tr>
-					<th class="border border-gray-300 px-4 py-2">Image</th>
-					<th class="border border-gray-300 px-4 py-2">Title</th>
-					<th class="border border-gray-300 px-4 py-2">Manufacturer</th>
-					<th class="border border-gray-300 px-4 py-2">Year</th>
-					<th class="border border-gray-300 px-4 py-2">Model Type</th>
-					<th class="border border-gray-300 px-4 py-2">Model Type Style</th>
-					<th class="border border-gray-300 px-4 py-2">Color</th>
-					<th class="border border-gray-300 px-4 py-2">Stock Number</th>
-					<th class="border border-gray-300 px-4 py-2">VIN</th>
-					<th class="border border-gray-300 px-4 py-2">Price</th>
-					<th class="border border-gray-300 px-4 py-2">Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{#each $displayedVehicles as vehicle (vehicle.vin)}
+		<div class="table">
+			<table class="w-full">
+				<thead>
 					<tr>
-						<td class="border border-gray-300 px-4 py-2">
-							<img src={vehicle.imageurl} alt={vehicle.title} class="w-20 h-auto object-cover" />
-						</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.title}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.manufacturer}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.year}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.model_type}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.model_typestyle}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.color}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.stocknumber}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.vin}</td>
-						<td class="border border-gray-300 px-4 py-2">{vehicle.price}</td>
-						<td class="border border-gray-300 px-4 py-2">
-							<a
-								href={`/vehicles/${vehicle.vin}`}
-								class="btn btn-sm variant-filled-primary"
-								target="_blank">View Details</a
-							>
-						</td>
+						<th>Image</th>
+						<th>Title</th>
+						<th>Manuf.</th>
+						<th>Year</th>
+						<th>Type</th>
+						<th>Style</th>
+						<th>Color</th>
+						<th>Stock #</th>
+						<th>VIN</th>
+						<th>Price</th>
+						<th>Actions</th>
 					</tr>
-				{/each}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{#each $displayedVehicles as vehicle (vehicle.vin)}
+						<tr>
+							<td>
+								<img src={vehicle.imageurl} alt={vehicle.title} class="w-20 h-auto object-cover" />
+							</td>
+							<td>{vehicle.title}</td>
+							<td>{vehicle.manufacturer}</td>
+							<td>{vehicle.year}</td>
+							<td>{vehicle.model_type}</td>
+							<td>{vehicle.model_typestyle}</td>
+							<td>{vehicle.color}</td>
+							<td>{vehicle.stocknumber}</td>
+							<td>{vehicle.vin}</td>
+							<td>{vehicle.price}</td>
+							<td>
+								<a href={`/vehicles/${vehicle.vin}`} class="btn btn-sm variant-filled-primary"
+									>View Details</a
+								>
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
 	{:else}
 		<div class="flex flex-row flex-wrap justify-start items-stretch gap-4">
 			{#each $displayedVehicles as vehicle (vehicle.vin)}
