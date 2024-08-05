@@ -36,7 +36,11 @@
   "dependencies": {
     "@floating-ui/dom": "^1.5.3",
     "@sentry/sveltekit": "^7.109.0",
+<<<<<<< Updated upstream
     "@vincjo/datatables": "^1.14.5",
+=======
+    "express": "^4.19.2",
+>>>>>>> Stashed changes
     "geist": "^1.0.0"
   }
 }
