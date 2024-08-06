@@ -12,7 +12,7 @@
 			{ headerName: 'Description', field: 'Description' },
 			{ headerName: 'On Hand', field: 'OnHand' },
 			{ headerName: 'Available', field: 'Avail' },
-			{ headerName: 'Last Sold Date', field: 'LastSoldDate' },
+			{ headerName: 'On Order', field: 'OnOrder' },
 			{
 				headerName: 'Price',
 				field: 'CurrentActivePrice',
