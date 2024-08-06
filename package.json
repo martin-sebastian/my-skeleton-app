@@ -35,12 +35,13 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "^1.5.3",
-    "@sentry/sveltekit": "^7.109.0",
-<<<<<<< Updated upstream
     "@vincjo/datatables": "^1.14.5",
-=======
+    "ag-grid-community": "^32.0.2",
+    "ag-grid-svelte": "^0.3.0",
+    "axios": "^1.7.3",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
->>>>>>> Stashed changes
-    "geist": "^1.0.0"
+    "geist": "^1.0.0",
+    "request": "^2.88.2"
   }
 }

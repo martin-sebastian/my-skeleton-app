@@ -1,65 +1,60 @@
 <script>
 	import { onMount } from 'svelte';
+	import { createGrid } from 'ag-grid-community';
+	import 'ag-grid-community/styles/ag-grid.css';
+	import 'ag-grid-community/styles/ag-theme-alpine.css';
 
-	let parts = [];
+	let gridElement;
+
+	let gridOptions = {
+		columnDefs: [
+			{ headerName: 'Part Number', field: 'PartNumber' },
+			{ headerName: 'Description', field: 'Description' },
+			{ headerName: 'On Hand', field: 'OnHand' },
+			{ headerName: 'Available', field: 'Avail' },
+			{ headerName: 'Last Sold Date', field: 'LastSoldDate' },
+			{
+				headerName: 'Price',
+				field: 'CurrentActivePrice',
+				valueFormatter: (params) => `$${params.value.toFixed(2)}`
+			},
+			{ headerName: 'Location (Bin)', field: 'Bin1' }
+		],
+		defaultColDef: {
+			sortable: true,
+			filter: true,
+			resizable: true
+		}
+	};
 
 	onMount(async () => {
-		const apiUrl =
-			"https://int.lightspeedadp.com/lsapi/Part/76014343?$top=1000&$filter=OnHand gt '1'";
 		try {
-			const response = await fetch(apiUrl, {
-				method: 'GET',
-				headers: {
-					Authorization: 'Basic ' + btoa('76014343:123456'), // Base64 encode username and key
-					'Content-Type': 'application/json'
-				}
-			});
-
+			const response = await fetch('http://localhost:3000/api/parts');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
-
 			const data = await response.json();
-			parts = data.value || []; // Assuming the parts are in `value` array
+
+			// Initialize AG Grid and get the gridApi
+			const { api: gridApi } = createGrid(gridElement, gridOptions);
+
+			// Use applyTransaction to add the row data if gridApi is available
+			if (gridApi) {
+				gridApi.applyTransaction({ add: data });
+			} else {
+				console.error('Grid API is not ready');
+			}
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
 	});
 </script>
 
-<template>
-	<div class="container mt-5">
-		<h1 class="text-center mb-4">Parts List</h1>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Part Number</th>
-					<th>Description</th>
-					<th>On Hand</th>
-					<th>Price</th>
-				</tr>
-			</thead>
-			<tbody>
-				{#each parts as part}
-					<tr>
-						<td>{part.PartNumber || 'N/A'}</td>
-						<td>{part.Description || 'N/A'}</td>
-						<td>{part.OnHand || '0'}</td>
-						<td>{part.Price || '0.00'}</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
-	</div>
-</template>
+<div class="ag-theme-alpine" style="height: 500px; width: 100%;" bind:this={gridElement} />
 
 <style>
-	.container {
-		max-width: 800px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		margin-bottom: 20px;
+	.ag-theme-alpine {
+		width: 100%;
+		height: 500px;
 	}
 </style>
