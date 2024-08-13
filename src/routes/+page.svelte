@@ -38,7 +38,7 @@
 	<div class="container space-y-5">
 		<h1 class="h1">
 			<span
-				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone"
+				class="bg-gradient-to-br from-blue-500 to-cyan-300 bg-clip-text text-transparent box-decoration-clone font-semibold"
 				>Design.</span
 			>
 			<span
